@@ -59,3 +59,41 @@
 // b -= 4;
 // c *= 3;
 // d /= 10;
+
+// ! 7
+// // Оголоси змінну message. Використовуючи конкатенацію рядків, задай їй наступне значення — рядок привітання користувача зі зверненням по імені. Ім'я зберігається в змінній username.
+
+// // Повідомлення привітання має виглядати так: "Welcome Poly!", де Poly — це значення змінної username. Зверни увагу, що пробіл має відноситися до рядка "Welcome "
+
+// const username = "Poly";
+// const message = 'Welcome ' + username + '!';
+
+// ! 8
+// // Оголоси змінну message і запиши в неї повідомлення про покупку.
+
+// // Це буде рядок у форматі: "You picked <назва товару>, price per item is <ціна товару> credits", де
+
+// // <назва товару> — це значення змінної productName
+// // <ціна товару> — це значення змінної pricePerItem
+// // Використовуй синтаксис шаблонних рядків. Уникай зайвих символів (пробілів, коми або крапки, що не передбачені вмістом рядка).
+
+// const productName = "Droid";
+// const pricePerItem = 3500;
+
+// // Change code below this line
+// const message = `You picked ${productName}, price per item is ${pricePerItem} credits`;
+
+// ! 9
+// // Магазин з продажу ремонтних дроїдів готовий до відкриття, залишилося написати скрипт для їх замовлення. Оголоси змінні та присвой їм відповідні значення:
+
+// // pricePerDroid - ціна одного дроїда, значення 800
+// // orderedQuantity - кількість дроїдів у замовленні, значення 6
+// // deliveryFee - вартість доставки, значення 50
+// // totalPrice - загальна сума замовлення до сплати (ціна одного дроїда помножена на кількість дроїдів у замовленні, плюс вартість доставки)
+// // message - повідомлення про стан замовлення у форматі "You ordered droids worth <total price> credits"
+
+// const pricePerDroid = 800;
+// const orderedQuantity = 6;
+// const deliveryFee = 50;
+// const totalPrice = pricePerDroid * orderedQuantity + deliveryFee;
+// const message = `You ordered droids worth ${totalPrice} credits`;
