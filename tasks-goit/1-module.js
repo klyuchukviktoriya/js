@@ -97,3 +97,29 @@
 // const deliveryFee = 50;
 // const totalPrice = pricePerDroid * orderedQuantity + deliveryFee;
 // const message = `You ordered droids worth ${totalPrice} credits`;
+
+// ! 10
+// // Змінна username зберігає рядок з іменем користувача. Оголоси змінну message та за допомогою синтаксису шаблонних рядків доповни код так, щоб в ній зберігався рядок наступного формату: "Username <name> is <length> characters long", в якому <name> це ім'я користувача зі змінної username, а <length> це його довжина.
+
+// const username = "Poly";
+// const message = `Username ${username} is ${username.length} characters long`;
+
+// ! 11
+// // Додай код, який записує у змінні наступні значення:
+// // courseTopicLength - довжина рядка
+// // firstElement - перший символ рядка
+// // lastElement - останній символ рядка (використовуй змінну courseTopicLength)
+// const courseTopic = "JavaScript essentials";
+
+// // const courseTopicLength = courseTopic;
+// const courseTopicLength = courseTopic.length;
+// // const firstElement = courseTopic;
+// const firstElement = courseTopic[0];
+// // const lastElement = courseTopic;
+// const lastElement = courseTopic[courseTopic.length - 1];
+
+// ! 12
+// Оголоси змінну isAdult та задай їй результат перевірки значення змінної age. Використай оператори порівняння та доповни код так, щоб значенням isAdult було true, якщо вік користувача більше або дорівнює 18 та false, якщо менше 18.
+
+const age = 16;
+const isAdult = age >= 18;
