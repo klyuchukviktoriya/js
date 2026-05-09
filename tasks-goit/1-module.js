@@ -123,3 +123,33 @@
 
 const age = 16;
 const isAdult = age >= 18;
+
+// ! 13
+// Оголоси змінну isValid і задай їй значенням результат перевірки рівності паролей в змінних correctPassword і userPassword.
+// Якщо паролі співпадають (сувора рівність), значення isValid має бути true
+// Якщо паролі не співпадають, значення isValid має бути false
+
+const correctPassword = 'jqueryismyjam';
+const userPassword = 'mangodab3st';
+const isValid = correctPassword === userPassword;
+
+// ! 14
+// // Змінна value містить величину у вигляді рядка, що складається з числової частини та одиниці виміру. Наприклад, 24.5px, 14cm, 20.3vh тощо.
+
+// // Оголоси змінну numerical і доповни код таким чином, щоб:
+
+// // Якщо це можливо, значенням змінної numerical буде число з плаваючою крапкою, що утворилось з рядка змінної value
+// // В іншому випадку, значенням numerical буде NaN.
+
+// const value = "24.5px";
+// const numerical = Number.parseFloat(value);
+
+// ! 15
+// // Оголоси функцію sayHi. У тілі функції sayHi додай console.log() з рядком "Hello, this is my first function!".
+// // Після оголошення виклич функцію sayHi.
+
+// function sayHi () {
+//   console.log("Hello, this is my first function!");
+// }
+
+// sayHi();
