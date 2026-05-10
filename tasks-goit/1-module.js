@@ -153,3 +153,32 @@ const isValid = correctPassword === userPassword;
 // }
 
 // sayHi();
+
+// ! 16
+// // Функція add повинна вміти додавати три числа і виводити результат у консоль. Оголоси для функції add три параметри: a, b і c, які будуть отримувати значення з аргументів, під час її виклику.
+// // Доповни console.log() таким чином, щоб він логував рядок "Addition result equals <result>", де <result> - це сума переданих чисел.
+
+// function add(a, b, c) {
+//   console.log(`Addition result equals ${a + b + c}`);
+// }
+
+// add(15, 27, 10);
+// add(10, 20, 30);
+// add(5, 10, 15);
+
+// ! 17
+// // Доповни код функції add таким чином, щоб вона повертала результат додавання значень трьох параметрів: a, b і c.
+// function add(a, b, c) {
+//     return a + b + c;
+// }
+
+// ! 18
+// // Функція makeMessage(name, price) створює і повертає повідомлення про покупку. Вона оголошує два параметри, значення яких будуть задаватися під час її виклику.
+// // name - назва товару
+// // price - ціна товару
+// // Доповни код функції таким чином, щоб вона повертала рядок "You picked <product name>, price per item is <product price> credits", де <product name> і <product price> - це значення параметрів name і price. Дуже зручно зробити цей рядок з використанням синтаксису шаблонних рядків.
+
+// function makeMessage (name, price) {
+// return `You picked ${name}, price per item is ${price} credits`
+// };
+// makeMessage();
