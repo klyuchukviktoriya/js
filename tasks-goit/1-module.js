@@ -182,3 +182,14 @@ const isValid = correctPassword === userPassword;
 // return `You picked ${name}, price per item is ${price} credits`
 // };
 // makeMessage();
+
+// ! 19
+// // Оголоси функцію calculateTotalPrice, яка рахує загальну суму покупки. Вона приймає два параметри, значення яких будуть задаватися під час її виклику.
+// // orderedQuantity - перший параметр, кількість одиниць товару в замовленні;
+// // pricePerItem - другий параметр, ціна одиниці товару.
+// // Функція повинна повертати загальну суму покупки - результат множення кількості товарів на ціну одного.
+
+// function calculateTotalPrice (orderedQuantity, pricePerItem) {
+//   return orderedQuantity * pricePerItem;
+// }
+// calculateTotalPrice();
