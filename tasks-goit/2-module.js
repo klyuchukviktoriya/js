@@ -23,3 +23,61 @@
 //     return 'Order is processed, our manager will contact you';
 //   }
 // }
+
+// ! 3
+// // Функція checkStorage(available, ordered) перевіряє можливість оформлення замовлення і повертає повідомлення про результат. Вона оголошує два параметри, значення яких будуть задаватися під час її виклику.
+
+// // available - доступна кількість товарів на складі
+// // ordered - кількість одиниць товару в замовленні
+// // Використовуючи розгалуження, доповни код функції таким чином, щоб:
+
+// // Якщо в замовленні ще немає товарів, тобто значення параметра ordered дорівнює 0, функція повертає рядок "There are no products in the order!".
+// // Якщо товарів у замовленні більше, ніж їх доступно на складі, то функція повертає рядок "Your order is too large, there are not enough items in stock!".
+// // В іншому випадку функція повертає рядок "The order is accepted, our manager will contact you".
+
+// function checkStorage(available, ordered) {
+// if (ordered === 0) {
+//   return 'There are no products in the order!';
+// } else if ( ordered > available){
+//   return 'Your order is too large, there are not enough items in stock!';
+// }
+//   return  'The order is accepted, our manager will contact you';
+// }
+
+// ! 4
+// // Функція checkPassword(password) порівнює переданий їй пароль (параметр password) зі збереженим паролем адміністратора (correctPassword) і повертає рядок з повідомленням про результат.
+
+// // Використовуючи тернарний оператор, доповни функцію таким чином, щоб:
+
+// // Якщо значення password і correctPassword збігаються, функція повертала рядок "Access granted"
+// // В іншому випадку, функція повертала рядок "Access denied, wrong password!"
+
+// function checkPassword(password) {
+//   const correctPassword = "jqueryismyjam";
+//  return password === correctPassword ? 'Access granted' : 'Access denied, wrong password!';
+// }
+
+// ! 5
+// // Функція getSubscriptionPrice(type) отримує рядок з типом передплати користувача (параметр type), перевіряє її на збіг з трьома можливими типами щомісячної передплати та повертає ціну, або повідомлення про неправильний тип передплати.
+// // Якщо значення параметра type — це рядок:
+// // "starter" — ціна передплати 0 кредитів.
+// // "professional" — ціна передплати 20 кредитів.
+// // "organization" — ціна передплати 50 кредитів.
+// // Для будь-якого іншого значення параметра type повертається рядок "Invalid subscription type!".
+// // Використай оператор switch для розв'язання цієї задачі!
+
+// function getSubscriptionPrice(type) {
+//   switch (type) {
+//     case 'starter':
+//      return 0;
+//       break;
+//     case 'professional':
+//       return 20;
+//       break;
+//     case 'organization':
+//      return  50;
+//       break;
+//       default:
+//       return 'Invalid subscription type!';
+//   }
+// }
