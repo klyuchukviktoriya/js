@@ -185,3 +185,38 @@ function checkFileExtension(fileName, ext) {
 // function createFileName(name, ext) {
 //   return name.trim() + '.' + ext;
 // }
+
+// ! 15
+// // Функція calculateTotal(number) приймає ціле число (параметр number). Доповни код функції так, щоб вона повертала суму всіх цілих чисел від одиниці до цього числа включно. Наприклад, якщо number дорівнює 3, то сума - це 1 + 2 + 3, тобто 6.
+// function calculateTotal(number) {
+//   let i = 0;
+//   let sum = 0;
+//   while (i <= number){
+//     sum += i;
+//     i++;
+//   }
+//   return sum;
+// }
+
+// ! 16
+// Функція calculateTotal(number) приймає ціле число (параметр number) Використовуючи цикл for, доповни код функції так, щоб вона повертала суму всіх цілих чисел від одиниці до цього числа включно. Наприклад, якщо number дорівнює 3, то сума - це 1 + 2 + 3, тобто 6.
+// function calculateTotal(number) {
+//   let sum = 0;
+//   for (let i = 0; i <= number; i++) {
+//   sum += i;
+//   }
+//   return sum;
+// }
+
+// ! 17
+// Функція calculateEvenTotal(number) приймає ціле число (параметр number). Доповни код функції так, щоб вона повертала суму всіх парних цілих чисел від одиниці до цього числа включно. Парні числа — це ті, що можна поділити на 2 без остачі (як це зробити розглядалося у темі Арифметичні операції у модулі 1). Наприклад, якщо number дорівнює 6, то сума - це 2 + 4 + 6, тобто 12.
+
+// function calculateEvenTotal(number) {
+//   let sum = 0;
+//   for (let i = 0; i<= number; i++){
+//     if (i % 2 === 0) {
+//       sum += i;
+//     }
+//   }
+//   return sum;
+// }
