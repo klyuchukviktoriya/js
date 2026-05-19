@@ -24,3 +24,26 @@
 
 // fruits[1] = "peach";
 // fruits[3] = 'banana';
+
+// ! 4
+// // Функція getOrderQuantity(order) приймає один параметр order - масив рядків, які описують продукти в замовленні клієнта. Доповни код функції таким чином, щоб вона повертала число, що дорівнює кількості елементів масиву.
+
+// function getOrderQuantity(order) {
+//   return order.length;
+// }
+
+// ! 5
+// // Функція getLastElementMeta(array) приймає один параметр array - масив довільних значень. Доповни код функції таким чином, щоб вона повертала новий масив з двох елементів:
+// // перший елемент - це індекс останнього елементу у масиві array
+// // другий елемент - це значення останнього елементу у масиві array
+
+// function getLastElementMeta(array) {
+//   return new Array (array.length - 1, array[array.length - 1])
+// }
+
+// ! 6
+// // Функція getExtremeElements(array) приймає один параметр array - масив елементів довільної довжини. Доповни код функції таким чином, щоб вона повертала масив з двох елементів - першого і останнього елементів параметра array.
+
+// function getExtremeElements(array) {
+//   return new Array (array[0], array[array.length - 1]);
+// }
