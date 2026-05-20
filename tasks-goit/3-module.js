@@ -47,3 +47,22 @@
 // function getExtremeElements(array) {
 //   return new Array (array[0], array[array.length - 1]);
 // }
+
+// ! 7
+// // Функція getLength(array) очікує один параметр array - масив довільних значень. Доповни код функції так, щоб вона перетворювала масив у рядок, без роздільників, і повертала кількість символів в отриманому рядку.
+
+// function getLength(array) {
+//   return array.join('').length;
+// }
+
+// ! 8
+// // Сервісу гравірування прикрас потрібна функція, яка б автоматично рахувала ціну гравірування, залежно від кількості слів і ціни за слово.
+
+// // Оголошена функція calculateEngravingPrice(message, pricePerWord). Ця функція приймає першим параметром рядок, що складається зі слів, розділених лише пробілами (параметр message) та другим параметром - число, що містить ціну гравірування за одне слово (параметр pricePerWord).
+
+// // Доповни тіло функції так, щоб вона повертала загальну вартість гравірування усіх слів в рядку.
+
+// function calculateEngravingPrice(message, pricePerWord) {
+//   return message.split(' ').length * pricePerWord;
+// }
+// calculateEngravingPrice("JavaScript is in my blood", 10)
