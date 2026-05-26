@@ -65,4 +65,37 @@
 // function calculateEngravingPrice(message, pricePerWord) {
 //   return message.split(' ').length * pricePerWord;
 // }
-// calculateEngravingPrice("JavaScript is in my blood", 10)
+
+// ! 9
+// // Доповни код таким чином, щоб змінні містили часткові копії вихідного масиву fruits.
+
+// // firstTwoEls - масив із перших двох елементів
+// // nonExtremeEls - масив з усіх елементів, крім першого та останнього
+// // lastThreeEls - масив із трьох останніх елементів
+
+// const fruits = ['apple', 'plum', 'pear', 'orange', 'banana'];
+
+// const firstTwoEls = fruits.slice(0, 2);
+// const nonExtremeEls = fruits.slice(1, fruits.length - 1);
+// const lastThreeEls = fruits.slice(fruits.length - 3);
+
+// ! 10
+// // Оголоси змінну allClients та доповни код таким чином, щоб її значенням було посилання на масив, що складається з усіх елементів масивів oldClients і newClients. Спочатку мають іти елементи з масива oldClients, а потім з newClients.
+// const oldClients = ["Mango", "Ajax", "Poly", "Kiwi"];
+// const newClients = ["Peach", "Houston"];
+
+// const allClients = oldClients.concat(newClients);
+
+// ! 11
+// // Функція getSlice(array, value) приймає два параметра:
+
+// // array - масив довільних елементів
+// // value - значення елемента масиву для пошуку
+// // Доповни код функції getSlice(array, value) так, щоб вона виконувала пошук значення value у масиві array і повертала:
+
+// // порожній масив, якщо в array немає елемента зі значенням value
+// // підмасив, що починається з початку array і до елемента зі значенням value включно, якщо такий елемент є в array
+
+// function getSlice(array, value) {
+// return array.indexOf(value) === -1 ? [] : array.slice(0, array.indexOf(value) + 1);
+// }
