@@ -111,3 +111,10 @@ function sumNumbers(arr) {
 }
 
 sumNumbers(numbers);
+
+function arrayFromArgs  ()  {
+    const arrLetters = Array.from(arguments);
+    console.log(arrLetters);
+};
+
+arrayFromArgs(1, 2, 3, 4, 5);

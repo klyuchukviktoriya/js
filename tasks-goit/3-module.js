@@ -99,3 +99,101 @@
 // function getSlice(array, value) {
 // return array.indexOf(value) === -1 ? [] : array.slice(0, array.indexOf(value) + 1);
 // }
+
+// ! 12
+// // Функція createArrayOfNumbers(min, max) приймає два параметра:
+
+// // min - ціле число, з якого починаються обчислення
+// // max - ціле число, до якого включно триватимуть обчислення
+// // Доповни код функції createArrayOfNumbers(min, max) таким чином, щоб вона повертала масив усіх цілих чисел від значення min до max включно.
+
+// function createArrayOfNumbers(min, max) {
+//     let arr = [];
+//     for (let i = min; i <= max; i++) {
+//         arr.push(i);
+//     }
+//     return arr;
+// }
+
+// ! 13
+// // Функція calculateTotalPrice(order) приймає один параметр order - масив чисел. Доповни функцію так, щоб вона повертала загальну суму елементів з масиву order.
+
+// function calculateTotalPrice(order) {
+//   return order.reduce((el, acc) => acc + el, 0)
+// }
+
+// ! 14
+// // Функція getEvenNumbers(start, end) має два параметри start та end, які є цілими числами. Доповни код функції так, щоб вона повертала масив усіх парних чисел від start до end. Якщо жодного парного числа немає, то масив має бути пустим. Парним вважається число, яке ділиться на 2 без остачі (10 % 2 === 0). Використовуй цикл for.
+
+// function getEvenNumbers(start, end) {
+//     let arr = [];
+//     for (let i = start; i <= end; i++) {
+//         if (i % 2 === 0) {
+//             arr.push(i);
+//         }
+//     }
+//     return arr;
+// }
+
+// ! 15
+// // Функція checkStorage(storage, item) приймає два параметри:
+
+// // storage - масив рядків, що описує доступні товари на складі
+// // item - рядок з назвою товара, наявність якого потрібно перевірити
+// // Доповни код функції таким чином, щоб вона перевіряла, чи присутній такий товар в масиві storage і повертала:
+
+// // рядок "<item> is available to order!", де item - це назва товара, якщо товар було знайдено
+// // рядок "Sorry! We are out of stock!", якщо такого товара немає в масиві
+// // Зроби так, щоб пошук за ім'ям товару був незалежний від регістру, тобто наприклад "plum" і "pLuM" мають бути знайдені у масиві ["apple", "plum", "pear"].
+
+// function checkStorage(storage, item) {
+//   return storage.includes(item.toLowerCase()) ? `${item.toLowerCase()} is available to order!` : `Sorry! We are out of stock!`;
+// }
+
+// ! 16
+// // Функція getCommonElements(array1, array2), приймає два масиви (array1 та array2) довільної довжини в якості параметрів.
+
+// // Доповни код функції:
+
+// // Створи порожній масив для зберігання нового масиву.
+// // Використай цикл for для ітерації кожного елемента у array1.
+// // У тілі циклу перевір, чи поточний елемент існує у array2 за допомогою методу includes.
+// // Якщо він існує, то додай елемент до нового масиву.
+// // Поверни наповнений масив спільних елементів як результат роботи функції.
+
+// function getCommonElements(array1, array2) {
+//     let arr = [];
+//     for (let i = 0; i <= array1.length; i++) {
+//         if (array2.includes(array1[i])) {
+//             arr.push(array1[i]);
+//         }
+//     }
+//     return arr;
+// }
+
+// ! 17
+// // Доповни код функції calculateTotalPrice(order) так, щоб вона повертала загальну суму чисел в масиві order. Використай цикл for...of для перебору масиву.
+// function calculateTotalPrice(order) {
+//   let sum = 0;
+//   for (item of order) {
+//   sum += item;
+//   }
+//   return sum;
+// }
+
+// ! 18
+// // Функція createReversedArray() може приймати довільну кількість аргументів. Доповни код функції так, щоб вона повертала масив усіх аргументів, але в масиві вони повинні йти у зворотному порядку. Тобто, при виклику createReversedArray(1, 2, 3), функція має повернути масив [3, 2, 1]. Використовуй цикл або метод масиву toReversed(), який застосовується до масиву і результатом роботи повертає новий масив з елементами у зворотньому порядку.
+// function createReversedArray() {
+//     const arr = Array.from(arguments);
+//     return arr.toReversed();
+// }
+
+// ! 19
+// // Функція calculateTax(amount, taxRate) оголошує два параметри:
+
+// // amount - число, сума від якої потрібно обчислити податок. Обов'язковий параметр.
+// // taxRate - число, податкова ставка. Необов'язковий параметр. За замовчуванням його значення має бути 0.2.
+// // Доповни код функції так, щоб вона повертала суму податку - результат множення суми на податкову ставку.
+// function calculateTax(amount, taxRate = 0.2) {
+//   return amount * taxRate;
+// }
