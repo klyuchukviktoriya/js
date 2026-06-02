@@ -205,3 +205,114 @@
 // };
 
 // ! 10
+// // Перебери об'єкт apartment, використовуючи цикл for...in, і запиши в масив keys всі його ключі, а в масив values всі значення його властивостей.
+// const apartment = {
+//   descr: "Spacious apartment in the city center",
+//   rating: 4,
+//   price: 2153,
+// };
+
+// const keys = [];
+// const values = [];
+
+// for (const item in apartment) {
+//   keys.push(item);
+// }
+
+// for (const item in apartment) {
+//   values.push(apartment[item]);
+// }
+
+// ! 11
+// // Перебери об'єкт apartment, використовуючи метод Object.keys() і цикл for...of. Запиши у змінну keys масив ключів властивостей об'єкта apartment, і додай в масив values всі значення його властивостей.
+
+// const apartment = {
+//     descr: 'Spacious apartment in the city center',
+//     rating: 4,
+//     price: 2153,
+// };
+// const values = [];
+// const keys = Object.keys(apartment);
+
+// for (item of keys) {
+//     values.push(apartment[item]);
+// }
+
+// ! 12
+// // Виконай рефакторинг функції countProps(object), замінивши перебір ключів за допомогою циклу for…in на метод Object.keys() для отримання масиву властивостей. Функція має повернути кількість властивостей в об'єкті object.
+// // function countProps(object) {
+// //     let propCount = 0;
+
+// //     for (const key in object) {
+// //         if (object.hasOwnProperty(key)) {
+// //             propCount += 1;
+// //         }
+// //     }
+
+// //     return propCount;
+// // }
+
+// function countProps(object) {
+//     let propCount = 0;
+
+//     propCount = Object.keys(object).length;
+
+//     return propCount;
+// }
+
+//! 13
+// // Запиши у змінну keys масив ключів властивостей об'єкта apartment, а у змінну values - масив їх значень. Використовуй методи Object.keys() і Object.values().
+
+// const apartment = {
+//     descr: 'Spacious apartment in the city center',
+//     rating: 4,
+//     price: 2153,
+// };
+
+// const keys = Object.keys(apartment);
+// const values = Object.values(apartment);
+
+// ! 14
+// // Функція countTotalSalary(salaries) приймає об'єкт зарплат (salaries) в якості параметра. Кожна властивість об'єкта salaries — це ключ, що містить ім'я співробітника, та значення - його відповідна зарплатня.
+// // Доповни код функції countTotalSalary(salaries) так, щоб вона повертала загальну суму зарплат всіх співробітників.
+// // Ініціалізуй змінну totalSalary зі значенням 0, яка буде відповідати за загальну суму зарплат усіх співробітників
+// // Використай метод Object.values() для отримання значень (зарплат) з об'єкта salaries
+// // Пройдись по отриманих значеннях за допомогою циклу та додай кожне значення до змінної totalSalary.
+// // Поверни totalSalary як результат
+
+// function countTotalSalary(salaries) {
+//     let totalSalary = 0;
+
+//     for (item of Object.values(salaries)) {
+//         totalSalary += item;
+//     }
+//     return totalSalary;
+// }
+
+// ! 15
+// // Масив colors містить колекцію кольорів. Кожен колір представлений об'єктом і має властивості hex і rgb з відповідними для цього формату і кольору значеннями.
+
+// // Перебери масив об'єктів colors, використовуючи цикл for...of. Додай у масив hexColors значення властивостей hex, а в масив rgbColors - значення властивостей rgb з усіх об'єктів масиву colors.
+
+// const colors = [
+//     { hex: '#f44336', rgb: '244,67,54' },
+//     { hex: '#2196f3', rgb: '33,150,243' },
+//     { hex: '#4caf50', rgb: '76,175,80' },
+//     { hex: '#ffeb3b', rgb: '255,235,59' },
+// ];
+
+// const hexColors = [];
+// const rgbColors = [];
+
+// for (item of colors) {
+//     hexColors.push(item.hex);
+// }
+
+// for (item of colors) {
+//     rgbColors.push(item.rgb);
+// }
+
+// ! 16
+// Функція getProductPrice(productName) приймає один параметр productName - назва продукту. Функція містить масив об'єктів products з такими властивостями, як name — ім'я товару, price — ціна і quantity — кількість.
+
+// Доповни код функції так, щоб вона шукала об'єкт продукту з певним ім'ям (властивість name) в масиві products і повертала його ціну (властивість price). Якщо продукт з такою назвою не знайдений, функція повинна повертати null.
