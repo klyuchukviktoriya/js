@@ -95,3 +95,20 @@ try {
 console.log('I did it');
 
 // !
+
+// function count() {
+//     let count = 0;
+//     return function () {
+//         count++;
+//         return count;
+//     };
+// }
+
+// const counter1 = count();
+// const counter2 = count();
+
+// console.log(counter1());
+// console.log(counter1());
+// console.log(counter2());
+// console.log(counter1());
+
