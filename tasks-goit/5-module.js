@@ -293,3 +293,300 @@ const getUserEmails = (users) => {
 };
 
 console.log(getUserEmails(userArr));
+
+// ! 14
+// // Доповни код так, щоб у змінній evenNumbers був масив парних чисел із масиву numbers, а у змінній oddNumbers — масив непарних. Обов'язково використовуй метод filter().
+// const numbers = [17, 24, 82, 61, 36, 18, 47, 52, 73];
+
+// const evenNumbers = numbers.filter((num) => num % 2 === 0);
+// const oddNumbers = numbers.filter((num) => num % 2 !== 0);
+
+// ! 15
+// // Масив books містить колекцію об'єктів книг, кожен з яких містить властивості title, author, rating. Використовуючи метод filter(), доповни код таким чином, щоб:
+
+// // У змінній topRatedBooks утворився масив книг, рейтинг яких (властивість rating) більший за або дорівнює значенню змінної MIN_RATING.
+// // У змінній booksByAuthor утворився масив книг, написаних автором з ім'ям (властивість author), яке збігається зі значенням у змінній AUTHOR.
+
+// const books = [
+//     {
+//         title: 'The Last Kingdom',
+//         author: 'Bernard Cornwell',
+//         rating: 8.38,
+//     },
+//     {
+//         title: 'Beside Still Waters',
+//         author: 'Robert Sheckley',
+//         rating: 8.51,
+//     },
+//     {
+//         title: 'The Tell-Tale Heart',
+//         author: 'Edgar Allan Poe',
+//         rating: 7.75,
+//     },
+//     { title: 'Redder Than Blood', author: 'Tanith Lee', rating: 7.94 },
+//     { title: 'Enemy of God', author: 'Bernard Cornwell', rating: 8.67 },
+// ];
+
+// const MIN_RATING = 8;
+// const AUTHOR = 'Bernard Cornwell';
+
+// const topRatedBooks = books.filter((el) => el.rating >= MIN_RATING);
+// const booksByAuthor = books.filter((el) => el.author === AUTHOR);
+
+// ! 16
+// Цей масив об'єктів ми будемо передавати в параметр users під час виклику функції із завдання.
+// Доповни функцію getUsersWithEyeColor(users, color) таким чином, щоб вона повертала масив користувачів, у яких колір очей (властивість eyeColor) збігається зі значенням другого параметра color.
+
+const getUsersWithEyeColor = (users, color) => {
+    return users.filter((user) => user.eyeColor === color);
+};
+
+console.log(getUsersWithEyeColor(userArr, 'brown'));
+
+// ! 17
+// Цей масив об'єктів ми будемо передавати в параметр users під час виклику функції із завдання.
+// Доповни код функції getUsersWithAge(users, minAge, maxAge), щоб повернути масив користувачів, вік (збережений у властивості age) яких потрапляє у заданий діапазон від minAge до maxAge.
+
+const getUsersWithAge = (users, minAge, maxAge) => {
+    return users.filter((user) => user.age <= maxAge && user.age >= minAge);
+};
+console.log(getUsersWithAge(userArr, 25, 80));
+
+// ! 18
+// // Масив books містить колекцію об'єктів книг, кожен з яких містить властивості title, author, rating.
+
+// // Використовуючи метод find(), доповни код таким чином, щоб:
+
+// // У змінній bookWithTitle утворився об'єкт книги, назва якої (властивість title) збігається зі значенням змінної BOOK_TITLE.
+// // У змінній bookByAuthor утворився об'єкт книги, автор якої (властивість author) збігається зі значенням змінної AUTHOR.
+
+// const books = [
+//     {
+//         title: 'The Last Kingdom',
+//         author: 'Bernard Cornwell',
+//         rating: 8.38,
+//     },
+//     {
+//         title: 'Beside Still Waters',
+//         author: 'Robert Sheckley',
+//         rating: 8.51,
+//     },
+//     {
+//         title: 'The Tell-Tale Heart',
+//         author: 'Edgar Allan Poe',
+//         rating: 7.75,
+//     },
+//     { title: 'Redder Than Blood', author: 'Tanith Lee', rating: 7.94 },
+// ];
+// const BOOK_TITLE = 'The Tell-Tale Heart';
+// const AUTHOR = 'Robert Sheckley';
+
+// const bookWithTitle = books.find((book) => book.title === BOOK_TITLE);
+// const bookByAuthor = books.find((book) => book.author === AUTHOR);
+
+// ! 19
+// Цей масив об'єктів ми будемо передавати в параметр users під час виклику функції із завдання.
+// Доповни функцію getUserWithEmail(users, email) таким чином, щоб вона повертала об'єкт користувача, пошта якого (властивість email) збігається зі значенням другого параметра email.
+
+const getUserWithEmail = (users, email) => {
+    return users.find((user) => user.email === email);
+};
+
+console.log(getUserWithEmail(userArr, 'shereeanthony@kog.com'));
+
+// ! 20
+// Цей масив об'єктів ми будемо передавати в параметр users під час виклику функції із завдання.
+// Доповни функцію isEveryUserActive(users) таким чином, щоб вона перевіряла, чи всі користувачі зараз активні (властивість isActive) і повертала true або false.
+
+const isEveryUserActive = (users) => {
+    return users.every((user) => user.isActive);
+};
+
+console.log(isEveryUserActive(userArr));
+
+// ! 21
+// Цей масив об'єктів ми будемо передавати в параметр users під час виклику функції із завдання.
+// Доповни функцію isAnyUserActive(users) таким чином, щоб вона перевіряла наявність хоча б одного активного користувача (властивість isActive) і повертала true або false.
+
+const isAnyUserActive = (users) => {
+    return users.some((user) => user.isActive);
+};
+console.log(isAnyUserActive(userArr));
+
+// ! 22
+// Ігровому сервісу необхідний функціонал підрахунку середнього часу, проведеного в іграх, одним гравцем. У змінній players зберігається об'єкт, де ключ це ім'я гравця, а значення - його ігровий час. У змінній playtimes зберігається масив значень об'єкта players, тобто масив ігрового часу усіх гравців. Значенням змінної averagePlayTime буде середній час, проведений одним гравцем в іграх.
+
+// Доповни код таким чином, щоб у змінній totalPlayTime вийшов загальний ігровий час з масиву playtimes. Використовуй метод reduce().
+
+const players = {
+    mango: 1270,
+    poly: 468,
+    ajax: 710,
+    kiwi: 244,
+};
+const playtimes = Object.values(players);
+
+const totalPlayTime = playtimes.reduce((acc, el) => acc + el, 0);
+
+const averagePlayTime = totalPlayTime / playtimes.length;
+
+// ! 23
+// // У змінній players зберігається масив об'єктів, кожен з яких має властивості name, playtime та gamesPlayed.
+
+// // Нашому сервісу необхідно розрахувати середній час, проведений в одній грі для кожного гравця, і отримати загальну суму цих значень часу у змінній totalAveragePlaytimePerGame. Розрахувати час для кожного з гравців можна, розділивши його час (властивість playtime) на кількість ігор (властивість gamesPlayed).
+
+// const players = [
+//     { name: 'Mango', playtime: 1270, gamesPlayed: 4 },
+//     { name: 'Poly', playtime: 469, gamesPlayed: 2 },
+//     { name: 'Ajax', playtime: 690, gamesPlayed: 3 },
+//     { name: 'Kiwi', playtime: 241, gamesPlayed: 1 },
+// ];
+
+// const totalAveragePlaytimePerGame = players.reduce(
+//     (acc, el) => acc + el.playtime / el.gamesPlayed,
+//     0
+// );
+
+// ! 24
+// Цей масив об'єктів ми будемо передавати в параметр users під час виклику функції із завдання.
+// Доповни функцію calculateTotalBalance(users) таким чином, щоб вона рахувала і повертала суму всіх коштів (властивість balance), які зберігають користувачі з масиву users.
+
+const calculateTotalBalance = (users) => {
+    return users.reduce((acc, el) => acc + el.balance, 0);
+};
+
+console.log(calculateTotalBalance(userArr));
+
+// ! 25
+// Змінна releaseDates - це масив чисел, років видання книг. Змінна authors - це масив рядків, авторів книг.
+
+// Доповни код таким чином, щоб у змінній ascendingReleaseDates вийшла копія масиву releaseDates, відсортована за зростанням, а у змінній alphabeticalAuthors - копія масиву імен авторів authors, відсортована за алфавітом. Використовуй метод toSorted()
+
+const releaseDates = [2016, 1967, 2008, 1984, 1973, 2012, 1997];
+const authors = [
+    'Tanith Lee',
+    'Bernard Cornwell',
+    'Robert Sheckley',
+    'Edgar Allan Poe',
+];
+
+const ascendingReleaseDates = releaseDates.toSorted();
+
+const alphabeticalAuthors = authors.toSorted();
+
+console.log(alphabeticalAuthors);
+
+// ! 26
+// Змінна releaseDates - це масив чисел, років видання книг.
+
+// Онлайн бібліотеці необхідно відображати книги, відсортовані за датою видання, за їх зростанням або спаданням. Доповни код таким чином, щоб у змінній ascendingReleaseDates вийшла копія масиву releaseDates, відсортована за зростанням, а у змінній descendingReleaseDates - копія, відсортована за спаданням.
+
+const releaseDates = [2016, 1967, 2008, 1984, 1973, 2012, 1997];
+
+const ascendingReleaseDates = releaseDates.toSorted((a, b) => a - b);
+
+const descendingReleaseDates = releaseDates.toSorted((a, b) => b - a);
+
+// ! 27
+// Змінна authors - це масив рядків, авторів книг.
+
+// Онлайн бібліотеці необхідно відображати книги, відсортовані за автором в алфавітному і в зворотному алфавітному порядку. Доповни код таким чином, щоб у змінній authorsInAlphabetOrder вийшла копія масиву authors, відсортована за алфавітом, а у змінній authorsInReversedOrder - копія, відсортована у зворотному алфавітному порядку.
+
+const authors = [
+    'Tanith Lee',
+    'Bernard Cornwell',
+    'Robert Sheckley',
+    'Edgar Allan Poe',
+    'Howard Lovecraft',
+];
+
+const authorsInAlphabetOrder = authors.toSorted((a, b) => a.localeCompare(b));
+
+const authorsInReversedOrder = authors.toSorted((a, b) => b.localeCompare(a));
+
+// ! 28
+// // Масив books містить масив об'єктів книг, кожен з яких містить властивості title, author, rating.
+
+// // Доповни код таким чином, щоб:
+
+// // У змінній sortedByAuthorName вийшов масив книг, відсортований за ім'ям автора в алфавітному порядку.
+// // У змінній sortedByReversedAuthorName вийшов масив книг, відсортований за ім'ям автора у зворотному алфавітному порядку.
+// // У змінній sortedByAscendingRating вийшов масив книг, відсортований за зростанням рейтингу.
+// // У змінній sortedByDescentingRating вийшов масив книг, відсортований за спаданням рейтингу.
+
+// const books = [
+//     {
+//         title: 'The Last Kingdom',
+//         author: 'Bernard Cornwell',
+//         rating: 8.38,
+//     },
+//     {
+//         title: 'Beside Still Waters',
+//         author: 'Robert Sheckley',
+//         rating: 8.51,
+//     },
+//     {
+//         title: 'The Tell-Tale Heart',
+//         author: 'Edgar Allan Poe',
+//         rating: 7.75,
+//     },
+//     {
+//         title: 'Redder Than Blood',
+//         author: 'Tanith Lee',
+//         rating: 7.94,
+//     },
+//     {
+//         title: 'Enemy of God',
+//         author: 'Bernard Cornwell',
+//         rating: 8.67,
+//     },
+// ];
+
+// const sortedByAuthorName = books.toSorted((a, b) =>
+//     a.author.localeCompare(b.author)
+// );
+
+// const sortedByReversedAuthorName = books.toSorted((a, b) =>
+//     b.author.localeCompare(a.author)
+// );
+
+// const sortedByAscendingRating = books.toSorted((a, b) => a.rating - b.rating);
+
+// const sortedByDescentingRating = books.toSorted((a, b) => b.rating - a.rating);
+
+// ! 29
+// Масив books містить масив об'єктів книг, кожен з яких містить властивості title, author, rating.
+
+// Доповни код таким чином, щоб у змінній names вийшов масив імен авторів в алфавітному порядку, рейтинг книг яких більший за значення змінної MIN_BOOK_RATING. Використовуй ланцюжок методів.
+
+const books = [
+    {
+        title: 'The Last Kingdom',
+        author: 'Bernard Cornwell',
+        rating: 8.38,
+    },
+    {
+        title: 'Beside Still Waters',
+        author: 'Robert Sheckley',
+        rating: 8.51,
+    },
+    {
+        title: 'The Tell-Tale Heart',
+        author: 'Edgar Allan Poe',
+        rating: 7.75,
+    },
+    { title: 'Redder Than Blood', author: 'Tanith Lee', rating: 7.94 },
+    {
+        title: 'The Dreams in the Witch House',
+        author: 'Howard Lovecraft',
+        rating: 8.67,
+    },
+];
+const MIN_BOOK_RATING = 8;
+
+const names = books
+    .filter((el) => el.rating >= MIN_BOOK_RATING)
+    .toSorted((a, b) => a.author.localeCompare(b.author))
+    .map((el) => el.author);
+
+console.log(names);
