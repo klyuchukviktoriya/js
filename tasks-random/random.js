@@ -111,4 +111,3 @@ console.log('I did it');
 // console.log(counter1());
 // console.log(counter2());
 // console.log(counter1());
-

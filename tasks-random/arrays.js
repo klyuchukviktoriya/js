@@ -112,9 +112,33 @@ function sumNumbers(arr) {
 
 sumNumbers(numbers);
 
-function arrayFromArgs  ()  {
+function arrayFromArgs() {
     const arrLetters = Array.from(arguments);
     console.log(arrLetters);
-};
+}
 
 arrayFromArgs(1, 2, 3, 4, 5);
+
+//  -- 1 --
+// У вас є масив об’єктів fruits, і в кожному з них є name
+// Напишіть код, який перетворює їх в масив імен.
+
+const fruits = [
+    { id: 0, fruitName: 'Apple' },
+    { id: 1, fruitName: 'Tomat' },
+    { id: 2, fruitName: 'Cherry' },
+    { id: 3, fruitName: 'Orange' },
+];
+
+let names = fruits.map((item) => item.fruitName);
+console.log(names);
+
+// //  -- 5 --
+// // Вирахуйте середній вік
+
+// const girls = [
+//   { age: 23, name: "Оля" },
+//   { age: 29, name: "Аня" },
+//   { age: 10, name: "Юля" },
+//   { age: 20, name: "Катя" },
+// ];
