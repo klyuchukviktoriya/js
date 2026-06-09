@@ -106,7 +106,7 @@ console.log(arr);
 const numbers = new Array(1, 2, 3, 4);
 
 function sumNumbers(arr) {
-    const sum = arr.reduce((number, acc) => (acc += number), 0);
+    const sum = arr.reduce((acc, number) => (acc += number), 0);
     console.log(sum);
 }
 
@@ -133,12 +133,103 @@ const fruits = [
 let names = fruits.map((item) => item.fruitName);
 console.log(names);
 
-// //  -- 5 --
-// // Вирахуйте середній вік
+//  -- 5 --
+// Вирахуйте середній вік
 
-// const girls = [
-//   { age: 23, name: "Оля" },
-//   { age: 29, name: "Аня" },
-//   { age: 10, name: "Юля" },
-//   { age: 20, name: "Катя" },
-// ];
+const girls = [
+    { age: 23, name: 'Оля' },
+    { age: 29, name: 'Аня' },
+    { age: 10, name: 'Юля' },
+    { age: 20, name: 'Катя' },
+];
+const age = girls.reduce((acc, item) => (acc += item.age), 0) / girls.length;
+console.log(age);
+
+// Задача:
+// Напиши функцию getFirstElement(arr),
+// которая возвращает первый элемент массива.
+
+function getFirstElement(arr) {
+    return arr[0];
+}
+
+console.log(getFirstElement([10, 20, 30])); // 10
+console.log(getFirstElement(['a', 'b'])); // "a"
+console.log(getFirstElement([true])); // true
+
+// Задача:
+// Напиши функцию getLastElement(arr),
+// которая возвращает последний элемент массива.
+
+function getLastElement(arr) {
+    return arr[arr.length - 1];
+}
+
+console.log(getLastElement([10, 20, 30])); // 30
+console.log(getLastElement(['a', 'b'])); // "b"
+console.log(getLastElement([true])); // true
+
+// Задача:
+// Напиши функцию getArrayLength(arr),
+// которая возвращает длину массива.
+
+function getArrayLength(arr) {
+    return arr.length;
+}
+
+console.log(getArrayLength([10, 20, 30])); // 3
+console.log(getArrayLength(['a', 'b'])); // 2
+console.log(getArrayLength([])); // 0
+
+// Задача:
+// Напиши функцию getSecondElement(arr),
+// которая возвращает второй элемент массива.
+
+function getSecondElement(arr) {
+    return arr[1] !== undefined ? arr[1] : 'второго элемента не существует';
+}
+
+console.log(getSecondElement([10, 20, 30])); // 20
+console.log(getSecondElement(['a', 'b'])); // "b"
+console.log(getSecondElement([true, false])); // false
+
+// Задача:
+// Напиши функцию containsElement(arr, value),
+// которая возвращает true, если элемент есть в массиве,
+// и false, если элемента нет.
+
+function containsElement(arr, value) {
+    return arr.includes(value);
+}
+
+console.log(containsElement([1, 2, 3], 2)); // true
+console.log(containsElement([1, 2, 3], 5)); // false
+console.log(containsElement(['a', 'b'], 'a')); // true
+console.log(containsElement(['a', 'b'], 'c')); // false
+
+// Задача:
+// Напиши функцию addElement(arr, value),
+// которая добавляет элемент в конец массива
+// и возвращает массив.
+
+function addElement(arr, value) {
+    arr.push(value);
+    return arr;
+}
+
+console.log(addElement([1, 2, 3], 4)); // [1, 2, 3, 4]
+console.log(addElement([], 'a')); // ["a"]
+
+// Задача:
+// Напиши функцию removeLastElement(arr),
+// которая удаляет последний элемент массива
+// и возвращает массив.
+
+function removeLastElement(arr) {
+    arr.pop();
+    return arr;
+}
+
+console.log(removeLastElement([1, 2, 3])); // [1, 2]
+console.log(removeLastElement(['a', 'b'])); // ["a"]
+console.log(removeLastElement([true])); // []
