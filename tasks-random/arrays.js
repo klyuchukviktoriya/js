@@ -233,3 +233,82 @@ function removeLastElement(arr) {
 console.log(removeLastElement([1, 2, 3])); // [1, 2]
 console.log(removeLastElement(['a', 'b'])); // ["a"]
 console.log(removeLastElement([true])); // []
+
+// Задача:
+// Напиши функцию addElementToStart(arr, value),
+// которая добавляет элемент в начало массива
+// и возвращает массив.
+
+function addElementToStart(arr, value) {
+    arr.unshift(value);
+    return arr;
+}
+
+console.log(addElementToStart([2, 3], 1)); // [1, 2, 3]
+console.log(addElementToStart(['b'], 'a')); // ["a", "b"]
+console.log(addElementToStart([], 1)); // [1]
+
+// Задача:
+// Напиши функцию removeFirstElement(arr),
+// которая удаляет первый элемент массива
+// и возвращает массив.
+
+function removeFirstElement(arr) {
+    arr.shift();
+    return arr;
+}
+
+console.log(removeFirstElement([1, 2, 3])); // [2, 3]
+console.log(removeFirstElement(['a', 'b'])); // ["b"]
+console.log(removeFirstElement([true])); // []
+
+// Задача:
+// Напиши функцию sumArray(arr),
+// которая возвращает сумму всех чисел в массиве.
+//
+// Пока без reduce.
+// Используй то, что считаешь нужным.
+
+function sumArray(arr) {
+    let sum = 0;
+    for (const item of arr) {
+        sum += item;
+    }
+
+    return sum;
+}
+
+console.log(sumArray([1, 2, 3])); // 6
+console.log(sumArray([10, 20])); // 30
+console.log(sumArray([])); // 0
+
+// Задача:
+// Напиши функцию countEvenNumbers(arr),
+// которая возвращает количество чётных чисел в массиве.
+
+function countEvenNumbers(arr) {
+    let sum = [];
+    arr.forEach((item) => {
+        if (item % 2 === 0) {
+            sum.push(item);
+        }
+    });
+    return sum.length;
+}
+
+console.log(countEvenNumbers([1, 2, 3, 4])); // 2
+console.log(countEvenNumbers([2, 4, 6])); // 3
+console.log(countEvenNumbers([1, 3, 5])); // 0
+
+// Задача:
+// Напиши функцию getEvenNumbers(arr),
+// которая возвращает новый массив
+// только с чётными числами.
+
+function getEvenNumbers(arr) {
+    return arr.filter((item) => item % 2 === 0);
+}
+
+console.log(getEvenNumbers([1, 2, 3, 4])); // [2, 4]
+console.log(getEvenNumbers([2, 4, 6])); // [2, 4, 6]
+console.log(getEvenNumbers([1, 3, 5])); // []
