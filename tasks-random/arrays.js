@@ -312,3 +312,42 @@ function getEvenNumbers(arr) {
 console.log(getEvenNumbers([1, 2, 3, 4])); // [2, 4]
 console.log(getEvenNumbers([2, 4, 6])); // [2, 4, 6]
 console.log(getEvenNumbers([1, 3, 5])); // []
+
+// Задача:
+// Напиши функцию hasNegativeNumber(arr),
+// которая возвращает true,
+// если в массиве есть хотя бы одно отрицательное число.
+
+function hasNegativeNumber(arr) {
+    return arr.some((num) => num < 0);
+}
+
+console.log(hasNegativeNumber([1, 2, 3])); // false
+console.log(hasNegativeNumber([1, -2, 3])); // true
+console.log(hasNegativeNumber([-1])); // true
+
+// Задача:
+// Напиши функцию doubleNumbers(arr),
+// которая возвращает новый массив,
+// где каждое число умножено на 2.
+
+function doubleNumbers(arr) {
+    return arr.map((item) => item * 2);
+}
+
+console.log(doubleNumbers([1, 2, 3])); // [2, 4, 6]
+console.log(doubleNumbers([10, 20])); // [20, 40]
+console.log(doubleNumbers([])); // []
+
+// Задача:
+// Напиши функцию getStringsLongerThan3(arr),
+// которая возвращает новый массив
+// только со строками длиннее 3 символов.
+
+function getStringsLongerThan3(arr) {
+    return arr.filter((item) => item.length > 3);
+}
+
+console.log(getStringsLongerThan3(['hi', 'hello', 'JS', 'world'])); // ["hello", "world"]
+console.log(getStringsLongerThan3(['a', 'ab'])); // []
+console.log(getStringsLongerThan3(['JavaScript'])); // ["JavaScript"]
