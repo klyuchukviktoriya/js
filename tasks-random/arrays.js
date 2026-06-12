@@ -351,3 +351,107 @@ function getStringsLongerThan3(arr) {
 console.log(getStringsLongerThan3(['hi', 'hello', 'JS', 'world'])); // ["hello", "world"]
 console.log(getStringsLongerThan3(['a', 'ab'])); // []
 console.log(getStringsLongerThan3(['JavaScript'])); // ["JavaScript"]
+
+// Задача:
+// Напиши функцию getNames(arr),
+// где arr — массив объектов вида:
+//
+// [
+//   { name: "Alex", age: 25 },
+//   { name: "John", age: 30 }
+// ]
+//
+// Функция должна вернуть массив имен.
+
+function getNames(arr) {
+    return arr.map((item) => item.name);
+}
+
+console.log(
+    getNames([
+        { name: 'Alex', age: 25 },
+        { name: 'John', age: 30 },
+    ])
+); // ["Alex", "John"]
+
+// Задача:
+// Напиши функцию getAdults(arr),
+// которая возвращает массив объектов,
+// у которых age >= 18.
+
+function getAdults(arr) {
+    return arr.filter((item) => item.age >= 18);
+}
+
+console.log(
+    getAdults([
+        { name: 'Alex', age: 25 },
+        { name: 'John', age: 15 },
+        { name: 'Kate', age: 18 },
+    ])
+);
+
+// [
+//   { name: "Alex", age: 25 },
+//   { name: "Kate", age: 18 }
+// ]
+
+// Задача:
+// Напиши функцию getAdultNames(arr),
+// которая возвращает массив имен
+// только совершеннолетних людей.
+
+function getAdultNames(arr) {
+    let names = [];
+    arr.forEach((item) => {
+        if (item.age >= 18) {
+            names.push(item.name);
+        }
+    });
+    return names;
+}
+
+console.log(
+    getAdultNames([
+        { name: 'Alex', age: 25 },
+        { name: 'John', age: 15 },
+        { name: 'Kate', age: 18 },
+    ])
+);
+
+// ["Alex", "Kate"]
+
+// Задача:
+// Напиши функцию getAverageAge(arr),
+// которая возвращает средний возраст всех людей.
+//
+// Гарантируется, что массив не пустой.
+
+function getAverageAge(arr) {
+    return arr.reduce((acc, item) => (acc += item.age), 0) / arr.length;
+}
+
+console.log(
+    getAverageAge([
+        { name: 'Alex', age: 20 },
+        { name: 'John', age: 30 },
+    ])
+); // 25
+
+// Задача:
+// Напиши функцию getOldestPerson(arr),
+// которая возвращает объект самого старшего человека.
+
+function getOldestPerson(arr) {
+    return arr.reduce((acc, item) => (acc.age > item.age ? acc : item));
+}
+
+console.log(
+    getOldestPerson([
+        { name: 'Alex', age: 20 },
+        { name: 'John', age: 30 },
+        { name: 'Kate', age: 25 },
+    ])
+);
+
+// { name: "John", age: 30 }
