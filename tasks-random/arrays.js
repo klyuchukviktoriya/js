@@ -455,3 +455,83 @@ console.log(
 );
 
 // { name: "John", age: 30 }
+
+// Задача:
+// Напиши функцию getTotalAge(arr),
+// которая возвращает сумму возрастов всех людей.
+
+function getTotalAge(arr) {
+    return arr.reduce((acc, item) => (acc += item.age), 0);
+}
+
+console.log(
+    getTotalAge([
+        { name: 'Alex', age: 20 },
+        { name: 'John', age: 30 },
+        { name: 'Kate', age: 25 },
+    ])
+); // 75
+
+// Задача:
+// Напиши функцию hasAdult(arr),
+// которая возвращает true,
+// если среди людей есть хотя бы один совершеннолетний.
+
+function hasAdult(arr) {
+    return arr.some((item) => item.age >= 18);
+}
+
+console.log(
+    hasAdult([
+        { name: 'Alex', age: 15 },
+        { name: 'John', age: 17 },
+    ])
+); // false
+
+console.log(
+    hasAdult([
+        { name: 'Alex', age: 15 },
+        { name: 'Kate', age: 18 },
+    ])
+); // true
+
+// Задача:
+// Напиши функцию getPersonByName(arr, name),
+// которая возвращает объект человека по имени.
+//
+// Если человека нет — вернуть undefined.
+
+function getPersonByName(arr, name) {
+    return arr.find((item) => item.name === name);
+}
+
+console.log(
+    getPersonByName(
+        [
+            { name: 'Alex', age: 20 },
+            { name: 'John', age: 30 },
+            { name: 'John', age: 30 },
+        ],
+        'John'
+    )
+);
+
+// { name: "John", age: 30 }
+
+// Задача:
+// Напиши функцию getNamesUpperCase(arr),
+// которая возвращает массив имен в верхнем регистре.
+
+function getNamesUpperCase(arr) {
+    return arr.map((item) => item.name.toUpperCase());
+}
+
+console.log(
+    getNamesUpperCase([
+        { name: 'Alex', age: 20 },
+        { name: 'John', age: 30 },
+        { name: 'Kate', age: 25 },
+    ])
+);
+
+// ["ALEX", "JOHN", "KATE"]
