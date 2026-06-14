@@ -535,3 +535,64 @@ console.log(
 );
 
 // ["ALEX", "JOHN", "KATE"]
+
+// Задача:
+// Напиши функцию getAdultsNames(arr),
+// которая возвращает массив имен
+// только совершеннолетних людей в верхнем регистре.
+
+function getAdultsNames(arr) {
+    return arr
+        .filter((item) => item.age >= 18)
+        .map((item) => item.name.toUpperCase());
+}
+
+console.log(
+    getAdultsNames([
+        { name: 'Alex', age: 25 },
+        { name: 'John', age: 15 },
+        { name: 'Kate', age: 18 },
+    ])
+);
+
+// ["ALEX", "KATE"]
+
+// Задача:
+// Напиши функцию getAverageAdultAge(arr),
+// которая возвращает средний возраст
+// только совершеннолетних людей.
+//
+// Гарантируется, что совершеннолетние есть.
+
+function getAverageAdultAge(arr) {
+    const adult = arr.filter((i) => i.age >= 18);
+    return adult.reduce((acc, i) => (acc += i.age), 0) / adult.length;
+}
+
+console.log(
+    getAverageAdultAge([
+        { name: 'Alex', age: 25 },
+        { name: 'John', age: 15 },
+        { name: 'Kate', age: 35 },
+    ])
+);
+
+// 30
+
+// Задача:
+// Напиши функцию getYoungestPerson(arr),
+// которая возвращает объект самого молодого человека.
+
+function getYoungestPerson(arr) {
+    return arr.reduce((acc, item) => (acc.age < item.age ? acc : item));
+}
+
+console.log(
+    getYoungestPerson([
+        { name: 'Alex', age: 20 },
+        { name: 'John', age: 30 },
+        { name: 'Kate', age: 18 },
+    ])
+);
+
+// { name: "Kate", age: 18 }
