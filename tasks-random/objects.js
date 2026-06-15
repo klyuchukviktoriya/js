@@ -58,3 +58,36 @@ const userA = {
 // Как сделать так, чтобы userB стал абсолютно независимым?
 const userB = JSON.parse(JSON.stringify(userA));
 console.log(userB);
+
+// Задача:
+// Напиши функцию getName(user),
+// которая возвращает имя пользователя.
+
+function getName(user) {
+    return user.name;
+}
+
+console.log(
+    getName({
+        name: 'Alex',
+        age: 25,
+    })
+); // "Alex"
+
+// Задача:
+// Напиши функцию getUserInfo(user).
+//
+// Она должна вернуть строку:
+//
+// "Alex (25)"
+
+function getUserInfo(user) {
+    return `${user.name} (${user.age})`;
+}
+
+console.log(
+    getUserInfo({
+        name: 'Alex',
+        age: 25,
+    })
+);

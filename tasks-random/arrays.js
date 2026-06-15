@@ -596,3 +596,82 @@ console.log(
 );
 
 // { name: "Kate", age: 18 }
+
+// Задача:
+// Напиши функцию groupByAge(arr).
+//
+// Она должна вернуть объект,
+// где ключ — возраст,
+// а значение — массив людей этого возраста.
+
+function groupByAge(arr) {
+    return arr.reduce((acc, item) => {
+        const age = item.age;
+
+        if (!acc[age]) {
+            acc[age] = [];
+        }
+
+        acc[age].push(item);
+
+        return acc;
+    }, {});
+}
+
+console.log(
+    groupByAge([
+        { name: 'Alex', age: 20 },
+        { name: 'John', age: 30 },
+        { name: 'Kate', age: 20 },
+    ])
+);
+
+/*
+{
+  20: [
+    { name: "Alex", age: 20 },
+    { name: "Kate", age: 20 }
+  ],
+  30: [
+    { name: "John", age: 30 }
+  ]
+}
+*/
+
+// Задача:
+// Напиши функцию countByAge(arr).
+//
+// Она должна вернуть объект,
+// где ключ — возраст,
+// а значение — количество людей этого возраста.
+
+function countByAge(arr) {
+    return arr.reduce((acc, item) => {
+        const age = item.age;
+
+        if (acc[age]) {
+            acc[age]++;
+        } else {
+            acc[age] = 1;
+        }
+
+        return acc;
+    }, {});
+}
+
+console.log(
+    countByAge([
+        { name: 'Alex', age: 20 },
+        { name: 'John', age: 30 },
+        { name: 'Kate', age: 20 },
+        { name: 'Mike', age: 30 },
+        { name: 'Bob', age: 30 },
+    ])
+);
+
+/*
+{
+  20: 2,
+  30: 3
+}
+*/
