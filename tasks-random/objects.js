@@ -221,3 +221,122 @@ console.log(
 );
 
 // "Alex (25)"
+
+// Задача:
+// Используй деструктуризацию с переименованием.
+//
+// Верни строку:
+// "Alex"
+
+function getUserName({ name: userName, age }) {
+    return `${userName}`;
+}
+
+console.log(
+    getUserName({
+        name: 'Alex',
+        age: 25,
+    })
+);
+
+// "Alex"
+
+// Задача:
+// Используй деструктуризацию со значением по умолчанию.
+//
+// Если city отсутствует,
+// вернуть "Unknown".
+
+function getCity({ city = 'Unknown' }) {
+    return `${city}`;
+}
+
+console.log(
+    getCity({
+        city: 'Berlin',
+    })
+); // "Berlin"
+
+console.log(getCity({})); // "Unknown"
+
+// Задача:
+// Не изменяя исходный объект,
+// создай новый объект,
+// где возраст увеличен до 30.
+
+function updateAge(user) {
+    const obj = { ...user };
+    obj.age = 30;
+    return obj;
+}
+
+const user = {
+    name: 'Alex',
+    age: 25,
+};
+
+console.log(updateAge(user));
+// { name: "Alex", age: 30 }
+
+console.log(user);
+// { name: "Alex", age: 25 }
+
+// Задача:
+// Не изменяя исходный объект,
+// добавь свойство city со значением "Berlin".
+
+function addCity(user) {
+    return { ...user, city: 'Berlin' };
+}
+
+const user = {
+    name: 'Alex',
+    age: 25,
+};
+
+console.log(addCity(user));
+
+// {
+//   name: "Alex",
+//   age: 25,
+//   city: "Berlin"
+// }
+
+// Задача:
+// Не изменяя исходный объект,
+// измени имя на "John".
+
+function updateName(user) {
+    return { ...user, name: 'John' };
+}
+
+const user = {
+    name: 'Alex',
+    age: 25,
+};
+
+console.log(updateName(user));
+
+// { name: "John", age: 25 }
+
+// Задача:
+// Не изменяя исходный объект,
+// добавь свойство city: "Berlin"
+// и измени age на 30.
+
+function updateUser(user) {
+    return { ...user, city: 'Berlin', age: 30 };
+}
+
+const user = {
+    name: 'Alex',
+    age: 25,
+};
+
+console.log(updateUser(user));
+
+// {
+//   name: "Alex",
+//   age: 30,
+//   city: "Berlin"
+// }
