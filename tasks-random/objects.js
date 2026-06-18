@@ -340,3 +340,119 @@ console.log(updateUser(user));
 //   age: 30,
 //   city: "Berlin"
 // }
+
+// Задача:
+// Не изменяя исходный массив,
+// добавь число 4 в конец.
+
+function addNumber(arr) {
+    // arr1 = [...arr];
+    // arr1.push(4);
+    // return arr1;
+    return [...arr, 4];
+}
+
+console.log(addNumber([1, 2, 3]));
+
+// [1, 2, 3, 4]
+
+// Задача:
+// Верни массив всех ключей объекта.
+
+function getKeys(obj) {
+    return Object.keys(obj);
+}
+
+console.log(
+    getKeys({
+        name: 'Alex',
+        age: 25,
+        city: 'Berlin',
+    })
+);
+
+// ["name", "age", "city"]
+
+// Задача:
+// Верни массив всех значений объекта.
+
+function getValues(obj) {
+    return Object.values(obj);
+}
+
+console.log(
+    getValues({
+        name: 'Alex',
+        age: 25,
+        city: 'Berlin',
+    })
+);
+
+// ["Alex", 25, "Berlin"]
+
+// Задача:
+// Верни массив пар [ключ, значение].
+
+function getEntries(obj) {
+    return Object.entries(obj);
+}
+
+console.log(
+    getEntries({
+        name: 'Alex',
+        age: 25,
+    })
+);
+
+// [
+//   ["name", "Alex"],
+//   ["age", 25]
+// ]
+
+// Задача:
+// Верни массив только имен пользователей.
+//
+// Используй Object.values.
+
+function getNames(users) {
+    return Object.values(users).map((item) => item.name);
+}
+
+console.log(
+    getNames({
+        user1: { name: 'Alex' },
+        user2: { name: 'John' },
+        user3: { name: 'Kate' },
+    })
+);
+
+// ["Alex", "John", "Kate"]
+
+// Задача:
+// Верни объект, в котором ключами будут имена пользователей,
+// а значениями — их возраст.
+//
+// Используй Object.values.
+
+function getUsersAges(users) {
+    return Object.values(users).reduce((acc, item) => {
+        const name = item.name;
+        const age = item.age;
+        acc[name] = age;
+        return acc;
+    }, {});
+}
+
+console.log(
+    getUsersAges({
+        user1: { name: 'Alex', age: 25 },
+        user2: { name: 'John', age: 30 },
+        user3: { name: 'Kate', age: 20 },
+    })
+);
+
+// {
+//   Alex: 25,
+//   John: 30,
+//   Kate: 20
+// }
