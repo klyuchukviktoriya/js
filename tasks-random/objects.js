@@ -456,3 +456,124 @@ console.log(
 //   John: 30,
 //   Kate: 20
 // }
+
+// Задача:
+// Верни массив строк вида:
+//
+// "Alex: 25"
+// "John: 30"
+// "Kate: 20"
+//
+// Используй Object.values и map.
+
+function getUsersInfo(users) {
+    return Object.values(users).map((item) => `${item.name}: ${item.age}`);
+}
+
+console.log(
+    getUsersInfo({
+        user1: { name: 'Alex', age: 25 },
+        user2: { name: 'John', age: 30 },
+        user3: { name: 'Kate', age: 20 },
+    })
+);
+
+// [
+//   "Alex: 25",
+//   "John: 30",
+//   "Kate: 20"
+// ]
+
+// Задача:
+// Верни объект только со взрослыми пользователями (age >= 18).
+//
+// Используй Object.entries.
+
+function getAdults(users) {
+    const array = Object.entries(users).filter((arr) => arr[1].age >= 18);
+    return Object.fromEntries(array);
+}
+
+console.log(
+    getAdults({
+        user1: { name: 'Alex', age: 25 },
+        user2: { name: 'John', age: 15 },
+        user3: { name: 'Kate', age: 20 },
+    })
+);
+
+// {
+//   user1: { name: "Alex", age: 25 },
+//   user3: { name: "Kate", age: 20 }
+// }
+
+// Задача:
+// Верни массив ключей пользователей,
+// чей возраст >= 18.
+//
+// Используй Object.entries.
+
+function getAdultUserKeys(users) {
+    return Object.entries(users)
+        .filter((arr) => arr[1].age >= 18)
+        .map((item) => item[0]);
+}
+
+console.log(
+    getAdultUserKeys({
+        user1: { name: 'Alex', age: 25 },
+        user2: { name: 'John', age: 15 },
+        user3: { name: 'Kate', age: 20 },
+    })
+);
+
+// ["user1", "user3"]
+
+// Задача:
+// Верни массив имен только взрослых пользователей.
+//
+// Используй Object.entries.
+
+function getAdultNames(users) {
+    return Object.entries(users)
+        .filter((arr) => arr[1].age >= 18)
+        .map((item) => item[1].name);
+}
+
+console.log(
+    getAdultNames({
+        user1: { name: 'Alex', age: 25 },
+        user2: { name: 'John', age: 15 },
+        user3: { name: 'Kate', age: 20 },
+    })
+);
+
+// ["Alex", "Kate"]
+
+// Задача:
+// Верни объект,
+// где ключ — имя пользователя,
+// значение — весь объект пользователя.
+//
+// Используй Object.values и reduce.
+
+function keyByName(users) {
+    return Object.values(users).reduce((acc, item) => {
+        acc[item.name] = item;
+        return acc;
+    }, {});
+}
+
+console.log(
+    keyByName({
+        user1: { name: 'Alex', age: 25 },
+        user2: { name: 'John', age: 30 },
+        user3: { name: 'Kate', age: 20 },
+    })
+);
+
+// {
+//   Alex: { name: "Alex", age: 25 },
+//   John: { name: "John", age: 30 },
+//   Kate: { name: "Kate", age: 20 }
+// }
