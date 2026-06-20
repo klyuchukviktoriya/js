@@ -577,3 +577,132 @@ console.log(
 //   John: { name: "John", age: 30 },
 //   Kate: { name: "Kate", age: 20 }
 // }
+
+// Задача:
+// Верни объект,
+// где ключ — возраст,
+// значение — количество пользователей этого возраста.
+
+function countByAge(users) {
+    return Object.values(users).reduce((acc, item) => {
+        if (!acc[item.age]) {
+            acc[item.age] = 1;
+        } else {
+            acc[item.age]++;
+        }
+
+        return acc;
+    }, {});
+}
+
+console.log(
+    countByAge({
+        user1: { name: 'Alex', age: 20 },
+        user2: { name: 'John', age: 30 },
+        user3: { name: 'Kate', age: 20 },
+        user4: { name: 'Mike', age: 30 },
+        user5: { name: 'Bob', age: 30 },
+    })
+);
+
+// {
+//   20: 2,
+//   30: 3
+// }
+
+// Задача:
+// Верни возраст,
+// который встречается чаще всего.
+//
+// Если:
+// 20 -> 2 человека
+// 30 -> 3 человека
+//
+// вернуть 30
+
+function getMostCommonAge(users) {
+    const ages = Object.values(users).reduce((acc, obj) => {
+        if (!acc[obj.age]) {
+            acc[obj.age] = 1;
+        } else {
+            acc[obj.age]++;
+        }
+
+        return acc;
+    }, {});
+    return Object.entries(ages).reduce((acc, arr) =>
+        acc[1] > arr[1] ? acc[0] : arr[0]
+    );
+}
+
+console.log(
+    getMostCommonAge({
+        user1: { name: 'Alex', age: 20 },
+        user2: { name: 'John', age: 30 },
+        user3: { name: 'Kate', age: 20 },
+        user4: { name: 'Mike', age: 30 },
+        user5: { name: 'Bob', age: 30 },
+    })
+);
+
+// 30
+
+// Задача:
+// Верни объект,
+// где ключ — возраст,
+// значение — массив имен людей этого возраста.
+
+function groupNamesByAge(users) {
+    return Object.values(users).reduce((acc, obj) => {
+        if (!acc[obj.age]) {
+            acc[obj.age] = [];
+        }
+        acc[obj.age].push(obj.name);
+
+        return acc;
+    }, {});
+}
+
+console.log(
+    groupNamesByAge({
+        user1: { name: 'Alex', age: 20 },
+        user2: { name: 'John', age: 30 },
+        user3: { name: 'Kate', age: 20 },
+        user4: { name: 'Mike', age: 30 },
+    })
+);
+
+// {
+//   20: ["Alex", "Kate"],
+//   30: ["John", "Mike"]
+// }
+
+// Задача:
+// Верни объект,
+// где ключ — первая буква имени,
+// значение — массив имен на эту букву.
+
+function groupByFirstLetter(users) {
+    return Object.values(users).reduce((acc, obj) => {
+        if (!acc[obj.name[0]]) {
+            acc[obj.name[0]] = [];
+        }
+        acc[obj.name[0]].push(obj.name);
+
+        return acc;
+    }, {});
+}
+
+console.log(
+    groupByFirstLetter({
+        user1: { name: 'Alex' },
+        user2: { name: 'Anna' },
+        user3: { name: 'John' },
+        user4: { name: 'Jack' },
+    })
+);
+
+// {
+//   A: ["Alex", "Anna"],
+//   J: ["John", "Jack"]
+// }
