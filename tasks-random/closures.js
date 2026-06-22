@@ -139,3 +139,32 @@ const greetOnce = once(greet);
 greetOnce('Alex'); // Hello, Alex
 greetOnce('John'); // ничего
 greetOnce('Kate'); // ничего
+
+// Задача:
+//
+// Напиши функцию createSecret.
+//
+// Она принимает секретную строку
+// и возвращает объект с двумя методами:
+//
+// getSecret() — возвращает секрет
+// setSecret(newSecret) — меняет секрет
+
+function createSecret(str) {
+    return {
+        getSecret() {
+            return str;
+        },
+        setSecret(newSecret) {
+            str = newSecret;
+        },
+    };
+}
+
+const secret = createSecret('12345');
+
+console.log(secret.getSecret()); // "12345"
+
+secret.setSecret('qwerty');
+
+console.log(secret.getSecret()); // "qwerty"
