@@ -8,28 +8,44 @@
 // getAll()
 
 function createPhoneBook() {
-    const book = [];
-
+    //! arrays
+    // const book = [];
+    // return {
+    //     add(name, phone) {
+    //         const userArr = [];
+    //         userArr.push(name, phone);
+    //         book.push(userArr);
+    //     },
+    //     find(name) {
+    //         const user = book.find((arr) => arr[0] === name);
+    //         if (user !== undefined) {
+    //             return user[1];
+    //         }
+    //     },
+    //     remove(name) {
+    //         const index = book.findIndex((arr) => arr[0] === name);
+    //         if (index !== -1) {
+    //             book.splice(index, 1);
+    //         }
+    //     },
+    //     getAll() {
+    //         return Object.fromEntries(book);
+    //     },
+    // };
+    //! objects
+    const user = {};
     return {
         add(name, phone) {
-            const userArr = [];
-            userArr.push(name, phone);
-            book.push(userArr);
+            user[name] = phone;
         },
         find(name) {
-            const user = book.find((arr) => arr[0] === name);
-            if (user !== undefined) {
-                return user[1];
-            }
+            return user[name];
         },
         remove(name) {
-            const index = book.findIndex((arr) => arr[0] === name);
-            if (index !== -1) {
-                book.splice(index, 1);
-            }
+            delete user[name];
         },
         getAll() {
-            return Object.fromEntries(book);
+            return user;
         },
     };
 }
