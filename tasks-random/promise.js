@@ -182,28 +182,49 @@
 // }
 // showUser();
 
-// Напиши функцию delay(ms).
-//
-// Она должна возвращать Promise,
-// который выполнится через ms миллисекунд.
-//
-// ======================
-// Проверка
-// ======================
-function delay(ms) {
-    return new Promise((resolve, reject) => setTimeout(resolve, ms));
-}
-console.log('Start');
+// // Напиши функцию delay(ms).
+// //
+// // Она должна возвращать Promise,
+// // который выполнится через ms миллисекунд.
+// //
+// // ======================
+// // Проверка
+// // ======================
+// function delay(ms) {
+//     return new Promise((resolve, reject) => setTimeout(resolve, ms));
+// }
+// console.log('Start');
 
-delay(2000).then(() => {
-    console.log('2 seconds passed');
-});
+// delay(2000).then(() => {
+//     console.log('2 seconds passed');
+// });
 
-console.log('End');
+// console.log('End');
 
-// Ожидаемый вывод:
-//
-// Start
-// End
-// (через 2 секунды)
-// 2 seconds passed
+// // Ожидаемый вывод:
+// //
+// // Start
+// // End
+// // (через 2 секунды)
+// // 2 seconds passed
+
+// // Напиши async функцию showProducts(),
+// // которая получит массив
+// // и выведет его в консоль.
+// function getProducts() {
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             resolve(['Apple', 'Banana', 'Orange']);
+//         }, 1000);
+//     });
+// }
+
+// async function showProducts() {
+//     try {
+//         const data = await getProducts();
+//         console.log(data);
+//     } catch (error) {
+//         console.error(error);
+//     }
+// }
+// showProducts();
