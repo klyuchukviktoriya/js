@@ -166,3 +166,151 @@ async function postUser() {
 }
 postUser().then((response) => console.log(response));
 // Выведи в консоль ответ сервера.
+
+//! Напиши функцию updateUser(id, data).
+//
+// Она должна:
+//
+// 1. Отправить PUT-запрос на:
+//
+// https://jsonplaceholder.typicode.com/users/:id
+//
+// Например:
+//
+// https://jsonplaceholder.typicode.com/users/5
+//
+// 2. Проверить response.ok.
+//
+// 3. Если response.ok === false,
+//    выбросить:
+//
+//    throw new Error(`HTTP Error: ${response.status}`);
+//
+// 4. Вернуть response.json().
+//
+
+async function updateUser(id, data) {
+    try {
+        const response = await fetch(`${URL_USERS}/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP Error: ${response.status}`);
+        }
+        return response.json();
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+// ======================
+// Проверка
+// ======================
+
+updateUser(5, {
+    name: 'Alex',
+    age: 25,
+})
+    .then((user) => console.log(user))
+    .catch((error) => console.log(error.message));
+
+// Ожидаемый результат:
+//
+// {
+//     id: 5,
+//     name: "Alex",
+//     age: 25
+// }
+
+//! fetch-patch
+
+// Напиши функцию renameUser(id, name).
+//
+// Она должна:
+//
+// 1. Отправить PATCH-запрос на:
+//
+// https://jsonplaceholder.typicode.com/users/:id
+//
+// 2. Изменить ТОЛЬКО поле name.
+//
+// 3. Проверить response.ok.
+//
+// 4. Если response.ok === false,
+//    выбросить:
+//
+//    throw new Error(`HTTP Error: ${response.status}`);
+//
+// 5. Вернуть response.json().
+//
+async function renameUser(id, name) {
+    try {
+        const response = await fetch(`${URL_USERS}/${id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name }),
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP Error: ${response.status}`);
+        }
+        return response.json();
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+
+// ======================
+// Проверка
+// ======================
+
+renameUser(5, 'Alex')
+    .then(console.log)
+    .catch((error) => console.log(error.message));
+
+//! fetch-delete
+
+// Напиши функцию deleteUser(id).
+//
+// Она должна:
+//
+// 1. Отправить DELETE-запрос на:
+//
+// https://jsonplaceholder.typicode.com/users/:id
+//
+// 2. Проверить response.ok.
+//
+// 3. Если response.ok === false,
+//    выбросить:
+//
+//    throw new Error(`HTTP Error: ${response.status}`);
+//
+// 4. Вернуть строку:
+//
+// "User deleted"
+//
+const URL_USERS = 'https://jsonplaceholder.typicode.com/users';
+async function deleteUser(id) {
+    try {
+        const res = await fetch(`${URL_USERS}/${id}`, {
+            method: 'DELETE',
+        });
+        if (!res.ok) {
+            throw new Error(`HTTP Error: ${res.status}`);
+        }
+        return 'User deleted';
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+// ======================
+// Проверка
+// ======================
+
+deleteUser(5)
+    .then(console.log)
+    .catch((error) => console.log(error.message));
+
+// Ожидаемый вывод:
+//
+// User deleted
