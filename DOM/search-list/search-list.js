@@ -14,17 +14,19 @@
 // Vue
 // Angular
 // Node.js
+//! Теперь сделаем его немного "умнее".
+// Поиск не должен начинаться, пока пользователь не ввел минимум 2 символа.
 
 const input = document.querySelector('.search');
 const listItems = document.querySelectorAll('li');
 
 input.addEventListener('input', () => {
-    const search = input.value.toLowerCase();
+    const search = input.value.toLowerCase().trim();
     listItems.forEach((li) => {
-        if (li.textContent.toLowerCase().includes(search)) {
-            li.style.display = '';
+        if (search.length >= 2) {
+            li.hidden = !li.textContent.toLowerCase().includes(search);
         } else {
-            li.style.display = 'none';
+            li.hidden = false;
         }
     });
 });
