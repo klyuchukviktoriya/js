@@ -148,6 +148,7 @@ async function getPosts() {
 
   } catch (error) {
     console.error(error);
+    return [];
   }
 }
 
@@ -164,6 +165,7 @@ async function getComments(postId) {
     return comments;
   } catch (error) {
     console.error(error);
+    return [];
   }
 }
 
