@@ -4,10 +4,27 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+        <link rel="stylesheet" href="style.css" />
     </head>
     <body>
         <input type="text" class="input" />
         <button class="add-button">Add task</button>
+        <button class="delete-completed">Delete completed</button>
+
+        <ul>
+            <li>
+                Total:
+                <span class="total-count">0</span>
+            </li>
+            <li>
+                Active:
+                <span class="active-count">0</span>
+            </li>
+            <li>
+                Completed:
+                <span class="completed-count">0</span>
+            </li>
+        </ul>
         <ul class="list"></ul>
         <script src="todo-localStorage.js"></script>
     </body>
