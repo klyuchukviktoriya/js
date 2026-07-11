@@ -1,43 +1,73 @@
 const input = document.querySelector('.input');
-const addBtn = document.querySelector('.add-button');
 const list = document.querySelector('.list');
-const deleteCompleted = document.querySelector('.delete-completed');
 const totalSpan = document.querySelector('.total-count');
 const activeSpan = document.querySelector('.active-count');
 const completedSpan = document.querySelector('.completed-count');
+const filters = document.querySelector('.filters');
+const actions = document.querySelector('.actions');
 
 let todos = JSON.parse(localStorage.getItem('todos')) || [];
+let currentFilter = 'all';
 
 renderList();
 
-addBtn.addEventListener('click', () => {
+actions.addEventListener('click', (e) => {
+  if (e.target.dataset.btn === 'add') {
+    const text = input.value.trim();
 
-  if (input.value.trim()) {
-    const task = {
+    if (!text) return;
+
+    todos.push({
       id: Date.now(),
-      text: input.value.trim(),
-      completed: false
-    }
-    todos.push(task);
+      text,
+      completed: false,
+    });
+
     input.value = '';
+    saveTodos();
+    renderList();
   }
 
-  saveTodos();
+  if (e.target.dataset.btn === 'delete') {
+    todos = todos.filter((obj) => !obj.completed);
+    saveTodos();
+    renderList();
+  }
+});
+
+filters.addEventListener('click', (e) => {
+  const filter = e.target.dataset.filter;
+
+  if (!filter) {
+    return;
+  }
+
+  filters
+    .querySelectorAll('[data-filter]')
+    .forEach((button) => button.classList.remove('active'));
+  e.target.classList.add('active');
+
+  currentFilter = filter;
   renderList();
-
-})
-
+});
 
 function renderList() {
-  list.innerHTML = todos
-    .map((obj) => `<li data-id='${obj.id}'>
-    <p class="${obj.completed ? 'completed' : ''}">${obj.text}</p>
-    <button>Delete</button>
-    </li>`)
-    .join('');
-  totalSpan.textContent = todos.length;
-  activeSpan.textContent = todos.filter(obj => !obj.completed).length;
-  completedSpan.textContent = todos.filter(obj => obj.completed).length;
+  let visibleTodos = todos.map(renderHTML).join('');
+
+  if (currentFilter === 'completed') {
+    visibleTodos = todos
+      .filter((obj) => obj.completed)
+      .map(renderHTML)
+      .join('');
+  } else if (currentFilter === 'active') {
+    visibleTodos = todos
+      .filter((obj) => !obj.completed)
+      .map(renderHTML)
+      .join('');
+  }
+
+  list.innerHTML = visibleTodos;
+  renderStats();
 }
 
 function saveTodos() {
@@ -45,24 +75,20 @@ function saveTodos() {
 }
 
 list.addEventListener('click', (e) => {
-
-  if (e.target.tagName === 'BUTTON') {
+  if (e.target.dataset.btn === 'deleteTask') {
     const li = e.target.closest('li');
     const taskId = li.dataset.id;
-    const index = todos.findIndex(obj => obj.id === Number(taskId));
 
+    todos = todos.filter(obj => obj.id !== Number(taskId));
 
-    if (index !== -1) {
-      todos.splice(index, 1);
-      saveTodos();
-      renderList();
-    }
+    saveTodos();
+    renderList();
   }
 
   if (e.target.tagName === 'P') {
     const li = e.target.closest('li');
     const taskId = li.dataset.id;
-    const task = todos.find(obj => obj.id === Number(taskId));
+    const task = todos.find((obj) => obj.id === Number(taskId));
 
     if (task) {
       task.completed = !task.completed;
@@ -70,10 +96,17 @@ list.addEventListener('click', (e) => {
       renderList();
     }
   }
-})
+});
 
-deleteCompleted.addEventListener('click', () => {
-  todos = todos.filter(obj => obj.completed === false);
-  saveTodos();
-  renderList();
-})
+function renderHTML(obj) {
+  return `<li data-id='${obj.id}'>
+    <p class="${obj.completed ? 'completed' : ''}">${obj.text}</p>
+    <button data-btn='deleteTask'>Delete</button>
+    </li>`;
+}
+
+function renderStats() {
+  totalSpan.textContent = todos.length;
+  activeSpan.textContent = todos.filter((obj) => !obj.completed).length;
+  completedSpan.textContent = todos.filter((obj) => obj.completed).length;
+}
