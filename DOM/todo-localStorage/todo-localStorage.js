@@ -75,17 +75,17 @@ function saveTodos() {
 }
 
 list.addEventListener('click', (e) => {
-  if (e.target.dataset.btn === 'deleteTask') {
+  if (e.target.dataset.btn === 'delete-task') {
     const li = e.target.closest('li');
     const taskId = li.dataset.id;
 
-    todos = todos.filter(obj => obj.id !== Number(taskId));
+    todos = todos.filter((obj) => obj.id !== Number(taskId));
 
     saveTodos();
     renderList();
   }
 
-  if (e.target.tagName === 'P') {
+  if (e.target.dataset.btn === 'toggle') {
     const li = e.target.closest('li');
     const taskId = li.dataset.id;
     const task = todos.find((obj) => obj.id === Number(taskId));
@@ -96,12 +96,62 @@ list.addEventListener('click', (e) => {
       renderList();
     }
   }
+
+
+  if (e.target.dataset.btn === 'edit') {
+    const li = e.target.closest('li');
+    const taskId = li.dataset.id;
+    const editInput = li.querySelector('input');
+    const saveChanges = li.querySelector('[data-btn="save-changes"]');
+
+    li.querySelector('p').classList.toggle('hidden');
+    editInput.classList.toggle('hidden');
+    saveChanges.classList.toggle('hidden');
+  }
+
+  if (e.target.dataset.btn === 'save-changes') {
+    const li = e.target.closest('li');
+    const taskId = li.dataset.id;
+    const editInput = li.querySelector('input');
+    const task = todos.find((obj) => obj.id === Number(taskId));
+    const text = editInput.value.trim();
+
+    if (task && text) {
+      task.text = text;
+    }
+
+    saveTodos();
+    renderList();
+  }
+
+  if (e.target.dataset.btn === 'cancel') {
+    const li = e.target.closest('li');
+    const editInput = li.querySelector('input');
+    const saveChanges = li.querySelector('[data-btn="save-changes"]');
+    const taskId = li.dataset.id;
+    const task = todos.find((obj) => obj.id === Number(taskId));
+
+    li.querySelector('p').classList.toggle('hidden');
+    editInput.classList.toggle('hidden');
+    saveChanges.classList.toggle('hidden');
+    editInput.value = task.text;
+  }
 });
 
 function renderHTML(obj) {
+  const taskNumber = todos.indexOf(obj) + 1;
   return `<li data-id='${obj.id}'>
-    <p class="${obj.completed ? 'completed' : ''}">${obj.text}</p>
-    <button data-btn='deleteTask'>Delete</button>
+    <h2>Task: ${taskNumber}</h2>
+    <input class='hidden' value='${obj.text}'>
+    <button class='hidden' data-btn="save-changes">Save changes</button>
+    <p class='${obj.completed ? 'completed' : ''}'>${obj.text}</p>
+    <div class='task-actions'>
+    <button data-btn="toggle">${obj.completed ? 'Mark as active' : 'Mark as complete'}
+    </button>
+    <button data-btn="edit">Edit</button>
+    <button data-btn="cancel">Cancel</button>
+    <button data-btn="delete-task">Delete</button>
+    </div>
     </li>`;
 }
 
