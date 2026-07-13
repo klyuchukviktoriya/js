@@ -12,8 +12,14 @@
             <button data-btn="add">Add task</button>
             <button data-btn="delete">Delete completed</button>
         </div>
+        <form class="search-form hidden" action="submit">
+            <input type="text" placeholder="Search" />
+            <button type="submit">Search</button>
+            <button type="reset">Reset</button>
+            <p class="hidden message">Not found</p>
+        </form>
 
-        <ul>
+        <ul class="counter">
             <li>
                 Total:
                 <span class="total-count">0</span>
@@ -28,8 +34,8 @@
             </li>
         </ul>
         <div>
-            <h2>Filter</h2>
             <div class="filters">
+                <h2>Filter</h2>
                 <button data-filter="all">All</button>
                 <button data-filter="active">Active</button>
                 <button data-filter="completed">Completed</button>
