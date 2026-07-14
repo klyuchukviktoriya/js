@@ -8,7 +8,9 @@ const actions = document.querySelector('.actions');
 const form = document.querySelector('.search-form');
 const counter = document.querySelector('.counter');
 const message = form.querySelector('.message');
+const searchInput = form.querySelector('input');
 
+let searchQuery = '';
 let todos = JSON.parse(localStorage.getItem('todos')) || [];
 let currentFilter = 'all';
 
@@ -65,21 +67,37 @@ filters.addEventListener('click', (e) => {
 });
 
 function renderList() {
-  let visibleTodos = todos.map(renderHTML).join('');
 
-  if (currentFilter === 'completed') {
-    visibleTodos = todos
-      .filter((obj) => obj.completed)
-      .map(renderHTML)
-      .join('');
-  } else if (currentFilter === 'active') {
-    visibleTodos = todos
-      .filter((obj) => !obj.completed)
-      .map(renderHTML)
-      .join('');
+  searchQuery = searchInput.value.toLowerCase().trim();
+
+  let visibleTodos = todos;
+  if (searchQuery) {
+    const found = todos.filter((obj) =>
+      obj.text.toLowerCase().includes(searchQuery)
+    );
+
+    if (found.length === 0) {
+      showMessage()
+    } else {
+      hideMessage();
+      visibleTodos = found;
+    }
+  }
+  else {
+    hideMessage();
+    searchInput.value = '';
+
   }
 
-  list.innerHTML = visibleTodos;
+  if (currentFilter === 'completed') {
+    visibleTodos = visibleTodos
+      .filter((obj) => obj.completed);
+  } else if (currentFilter === 'active') {
+    visibleTodos = visibleTodos
+      .filter((obj) => !obj.completed);
+  }
+
+  list.innerHTML = visibleTodos.map(renderHTML).join('');
   renderStats();
 }
 
@@ -205,34 +223,29 @@ function renderStats() {
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  const searchInput = form.querySelector('input');
-  const value = searchInput.value.toLowerCase().trim();
-
-  if (value) {
-    const found = todos.filter((obj) =>
-      obj.text.toLowerCase().includes(value)
-    );
-
-    if (found.length === 0) {
-      filters.classList.add('hidden');
-      list.classList.add('hidden');
-      counter.classList.add('hidden');
-      message.classList.remove('hidden');
-    } else {
-      list.classList.remove('hidden');
-      message.classList.add('hidden');
-      list.innerHTML = found.map(renderHTML).join('');
-    }
-  } else {
-    searchInput.value = '';
-    renderList();
-  }
+  renderList();
 });
 
 form.addEventListener('reset', () => {
+  searchQuery = '';
+  searchInput.value = '';
+
+  hideMessage();
+
+  renderList();
+});
+
+
+function hideMessage() {
   filters.classList.remove('hidden');
   list.classList.remove('hidden');
   counter.classList.remove('hidden');
   message.classList.add('hidden');
-  renderList();
-});
+}
+
+function showMessage() {
+  filters.classList.add('hidden');
+  list.classList.add('hidden');
+  counter.classList.add('hidden');
+  message.classList.remove('hidden');
+}
