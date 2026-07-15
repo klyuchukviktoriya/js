@@ -18,7 +18,16 @@
             <button type="reset">Reset</button>
             <p class="hidden message">No task found</p>
         </form>
-
+        <div class="sorting">
+            <label for="task-sorting">Sort by:</label>
+            <select name="tasks" id="task-sorting">
+                <option value="">Choose option</option>
+                <option value="newest">Newest first</option>
+                <option value="oldest">Oldest first</option>
+                <option value="az">A → Z</option>
+                <option value="za">Z → A</option>
+            </select>
+        </div>
         <ul class="counter">
             <li>
                 Total:
@@ -43,6 +52,6 @@
         </div>
 
         <ul class="list"></ul>
-        <script src="todo-localStorage.js"></script>
+        <script src="todo-localStorage.js" type="module"></script>
     </body>
 </html>

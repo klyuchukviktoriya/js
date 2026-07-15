@@ -9,7 +9,10 @@ const form = document.querySelector('.search-form');
 const counter = document.querySelector('.counter');
 const message = form.querySelector('.message');
 const searchInput = form.querySelector('input');
+const select = document.querySelector('select');
+const selectDiv = document.querySelector('.sorting');
 
+let currentSort = 'newest';
 let searchQuery = '';
 let todos = JSON.parse(localStorage.getItem('todos')) || [];
 let currentFilter = 'all';
@@ -67,7 +70,6 @@ filters.addEventListener('click', (e) => {
 });
 
 function renderList() {
-
   searchQuery = searchInput.value.toLowerCase().trim();
 
   let visibleTodos = todos;
@@ -77,24 +79,38 @@ function renderList() {
     );
 
     if (found.length === 0) {
-      showMessage()
+      showMessage();
     } else {
       hideMessage();
       visibleTodos = found;
     }
-  }
-  else {
+  } else {
     hideMessage();
     searchInput.value = '';
-
   }
 
   if (currentFilter === 'completed') {
-    visibleTodos = visibleTodos
-      .filter((obj) => obj.completed);
+    visibleTodos = visibleTodos.filter((obj) => obj.completed);
   } else if (currentFilter === 'active') {
-    visibleTodos = visibleTodos
-      .filter((obj) => !obj.completed);
+    visibleTodos = visibleTodos.filter((obj) => !obj.completed);
+  }
+
+  if (currentSort === 'oldest') {
+    visibleTodos = visibleTodos.toSorted(
+      (a, b) => a.createdAt - b.createdAt
+    );
+  } else if (currentSort === 'newest') {
+    visibleTodos = visibleTodos.toSorted(
+      (a, b) => b.createdAt - a.createdAt
+    );
+  } else if (currentSort === 'za') {
+    visibleTodos = visibleTodos.toSorted((a, b) =>
+      b.text.localeCompare(a.text)
+    );
+  } else if (currentSort === 'az') {
+    visibleTodos = visibleTodos.toSorted((a, b) =>
+      a.text.localeCompare(b.text)
+    );
   }
 
   list.innerHTML = visibleTodos.map(renderHTML).join('');
@@ -193,8 +209,8 @@ function renderHTML(obj) {
   return `<li data-id='${obj.id}'>
     <h2>Task: ${taskNumber}</h2>
     <input class='hidden' value='${obj.text}'>
-    <button class='hidden' data-btn="save-changes">Save changes</button>
-    <button class='hidden' data-btn="cancel">Cancel</button>
+    <button class='hidden' data-btn='save-changes'>Save changes</button>
+    <button class='hidden' data-btn='cancel'>Cancel</button>
     <p class='${obj.completed ? 'completed' : ''}'>${obj.text}</p>
     <div>   
       <p>Created at:</p>
@@ -207,10 +223,10 @@ function renderHTML(obj) {
       <p>${editedTime}</p>
      </div>
     <div class='task-actions'>
-    <button data-btn="toggle">${obj.completed ? 'Mark as active' : 'Mark as complete'}
+    <button data-btn='toggle'>${obj.completed ? 'Mark as active' : 'Mark as complete'}
     </button>
-    <button data-btn="edit">Edit</button>
-    <button data-btn="delete-task">Delete</button>
+    <button data-btn='edit'>Edit</button>
+    <button data-btn='delete-task'>Delete</button>
     </div>
     </li>`;
 }
@@ -235,11 +251,11 @@ form.addEventListener('reset', () => {
   renderList();
 });
 
-
 function hideMessage() {
   filters.classList.remove('hidden');
   list.classList.remove('hidden');
   counter.classList.remove('hidden');
+  selectDiv.classList.remove('hidden');
   message.classList.add('hidden');
 }
 
@@ -247,5 +263,11 @@ function showMessage() {
   filters.classList.add('hidden');
   list.classList.add('hidden');
   counter.classList.add('hidden');
+  selectDiv.classList.add('hidden');
   message.classList.remove('hidden');
 }
+
+select.addEventListener('change', (e) => {
+  currentSort = e.target.value;
+  renderList();
+});
