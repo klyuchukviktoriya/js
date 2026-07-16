@@ -119,7 +119,7 @@
 // // Функція calculateTotalPrice(order) приймає один параметр order - масив чисел. Доповни функцію так, щоб вона повертала загальну суму елементів з масиву order.
 
 // function calculateTotalPrice(order) {
-//   return order.reduce((el, acc) => acc + el, 0)
+//   return order.reduce((acc, el ) => acc + el, 0)
 // }
 
 // ! 14

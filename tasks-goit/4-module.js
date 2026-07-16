@@ -336,21 +336,21 @@
 // Напиши функцію getAllPropValues(propName), яка приймає один параметр propName - ім'я (ключ) властивості. Функція повинна повернути масив усіх значень властивості з таким ім'ям з кожного об'єкта в масиві products. Якщо в об'єктах відсутні властивості з таким ім'ям, функція повинна повернути порожній масив.
 
 function getAllPropValues(propName) {
-    const products = [
-        { name: 'Radar', price: 1300, quantity: 4 },
-        { name: 'Scanner', price: 2700, quantity: 3 },
-        { name: 'Droid', price: 400, quantity: 7 },
-        { name: 'Grip', price: 1200, quantity: 9 },
-    ];
+  const products = [
+    { name: 'Radar', price: 1300, quantity: 4 },
+    { name: 'Scanner', price: 2700, quantity: 3 },
+    { name: 'Droid', price: 400, quantity: 7 },
+    { name: 'Grip', price: 1200, quantity: 9 },
+  ];
 
-    const values = [];
+  const values = [];
 
-    for (item of products) {
-        if (item.hasOwnProperty(propName)) {
-            values.push(item[propName]);
-        }
+  for (item of products) {
+    if (item.hasOwnProperty(propName)) {
+      values.push(item[propName]);
     }
-    return values;
+  }
+  return values;
 }
 
 // ! 18
@@ -485,7 +485,7 @@ function getAllPropValues(propName) {
 // // Використовуючи синтаксис залишкових параметрів, доповни код функції add() так, щоб вона приймала будь-яку кількість аргументів у параметр args і повертала їхню суму.
 
 // function add (...args) {
-//   return args.reduce((el, acc ) => acc += el, 0);
+//   return args.reduce((acc, el ) => acc += el, 0);
 // }
 
 // ! 26
