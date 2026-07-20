@@ -149,9 +149,119 @@ async function getResult() {
 
 getResult();
 
+//! 6 =========================================
 
-//! Запомнить
-// Promise.all() → нужны все результаты.
-// Promise.race() → нужен самый быстрый (успех или ошибка).
-// Promise.allSettled() → дождаться всех, даже с ошибками.
-// Promise.any() → нужен первый успешный результат.
+function getUser() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ id: 1, name: 'Vika' });
+    }, 2000);
+  });
+}
+
+function getPosts() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(['Post 1', 'Post 2']);
+    }, 1000);
+  });
+}
+
+function getSettings() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ theme: 'dark' });
+    }, 3000);
+  });
+}
+
+async function getResult() {
+
+  const result = await Promise.race([getUser(), getPosts(), getSettings()]);
+  console.log(result);
+
+}
+
+getResult();
+
+//! 7 =========================================
+
+function getUser() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ id: 1, name: 'Vika' });
+    }, 2000);
+  });
+}
+
+function getPosts() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject(new Error('Posts error'));
+    }, 1000);
+  });
+}
+
+function getSettings() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ theme: 'dark' });
+    }, 3000);
+  });
+}
+
+async function getResult() {
+
+  const result = await Promise.allSettled([getUser(), getPosts(), getSettings()]);
+  console.log(result);
+
+}
+
+getResult();
+
+//! 8 =========================================
+
+function getUser() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject(new Error('User error'));
+    }, 2000);
+  });
+}
+
+function getPosts() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject(new Error('Posts error'));
+    }, 1000);
+  });
+}
+
+function getSettings() {
+  // return new Promise((resolve) => {
+  //   setTimeout(() => {
+  //     resolve({ theme: 'dark' });
+  //   }, 3000);
+  // });
+
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject(new Error('Settings error'));
+    }, 3000);
+  });
+}
+
+async function getResult() {
+
+  //  const result = await Promise.any([getUser(), getPosts(), getSettings()]);
+  //   console.log(result);
+
+  try {
+    const result = await Promise.any([getUser(), getPosts(), getSettings()]);
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+getResult();
