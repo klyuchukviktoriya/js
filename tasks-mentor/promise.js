@@ -228,3 +228,155 @@
 //     }
 // }
 // showProducts();
+
+// // =========================================
+//! // Задание 1
+// // Promise + resolve
+// // =========================================
+
+// // Создай Promise, который сразу вернет строку:
+// //
+// // "Hello!"
+// //
+// // через resolve().
+// //
+// // Затем создай async функцию,
+// // получи результат с помощью await
+// // и выведи его в консоль.
+// //
+// // Ожидаемый вывод:
+// //
+// // Hello!
+
+// const promise = new Promise(resolve => {
+//   resolve('Hello!');
+// })
+
+// async function getResult() {
+//   const result = await promise;
+//   console.log(result);
+// }
+
+// getResult();
+
+// // =========================================
+//! // Задание 2
+// // Promise + reject
+// // =========================================
+
+// // Создай Promise, который сразу
+// // завершится ошибкой через reject().
+// //
+// // Текст ошибки:
+// //
+// // "Something went wrong"
+// //
+// // Затем получи результат с помощью
+// // await.
+// //
+// // Обработай ошибку через try/catch.
+// //
+// // Ожидаемый вывод:
+// //
+// // Something went wrong
+
+// const promise = new Promise((resolve, reject) => {
+//   reject(new Error('Something went wrong'));
+// });
+
+// async function getResult() {
+//   try {
+//     const result = await promise;
+//     console.log(result);
+//   } catch (error) {
+//     console.error(error.message);
+//   }
+// }
+
+// getResult();
+
+// // =========================================
+// //! Задание 3
+// // Promise + setTimeout
+// // =========================================
+
+// // Создай Promise.
+// //
+// // Через 2 секунды он должен
+// // успешно завершиться
+// // и вернуть строку:
+// //
+// // "Done!"
+// //
+// // Используй:
+// //
+// // - new Promise
+// // - setTimeout
+// // - resolve
+// //
+// // Затем получи результат
+// // через await
+// // и выведи его в консоль.
+// //
+// // Ожидаемый вывод (через 2 секунды):
+// //
+// // Done!
+
+// const promise = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     resolve('Done!');
+//   }, 2000)
+// })
+
+// async function getResult() {
+//   const result = await promise;
+//   console.log(result);
+// }
+
+// getResult();
+
+// =========================================
+//! Задание 4
+// Promise + setTimeout + reject
+// =========================================
+
+// Создай Promise.
+//
+// Через 2 секунды он должен
+// завершиться ошибкой.
+//
+// Используй:
+//
+// - new Promise
+// - setTimeout
+// - reject
+//
+// Текст ошибки:
+//
+// "Time is over"
+//
+// Затем получи результат
+// через await.
+//
+// Обработай ошибку
+// через try/catch.
+//
+// Ожидаемый вывод (через 2 секунды):
+//
+// Time is over
+
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject(new Error('Time is over'));
+  }, 2000);
+});
+
+async function getResult() {
+  try {
+    await promise;
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+getResult();
