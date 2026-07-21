@@ -293,7 +293,7 @@ const URL_USERS = 'https://jsonplaceholder.typicode.com/users';
 async function deleteUser(id) {
     try {
         const res = await fetch(`${URL_USERS}/${id}`, {
-            method: 'DELETE',
+            method: 'DELETE'
         });
         if (!res.ok) {
             throw new Error(`HTTP Error: ${res.status}`);
