@@ -1,3 +1,6 @@
 {
-    "type": "module"
+    "type": "module",
+    "dependencies": {
+        "basiclightbox": "^5.0.4"
+    }
 }
