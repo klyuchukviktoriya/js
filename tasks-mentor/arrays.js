@@ -675,3 +675,158 @@ console.log(
   30: 3
 }
 */
+
+//! ЗАДАЧА: Отчёт по товарам
+/*
+Напиши функцию getInventoryReport(products), которая возвращает:
+
+{
+  totalQuantity: 10,
+  totalValue: 4600,
+  outOfStock: ['Мышь', 'Кабель'],
+  mostExpensive: 'Ноутбук'
+}
+
+Исходный массив изменять нельзя.
+*/
+const products = [
+    { name: 'Ноутбук', price: 1200, quantity: 3 },
+    { name: 'Мышь', price: 25, quantity: 0 },
+    { name: 'Клавиатура', price: 80, quantity: 5 },
+    { name: 'Монитор', price: 300, quantity: 2 },
+    { name: 'Кабель', price: 10, quantity: 0 },
+];
+
+function getInventoryReport(products) {
+    const totalQuantity = products.reduce((acc, obj) => acc + obj.quantity, 0);
+    const totalValue = products.reduce(
+        (acc, obj) => acc + obj.price * obj.quantity,
+        0
+    );
+    const outOfStock = products
+        .filter((obj) => obj.quantity === 0)
+        .map((obj) => obj.name);
+    const mostExpensive = products.reduce((acc, obj) => {
+        if (acc.price > obj.price) {
+            return acc;
+        }
+        return obj;
+    });
+    return {
+        totalQuantity,
+        totalValue,
+        outOfStock,
+        mostExpensive: mostExpensive.name,
+    };
+}
+
+console.log(getInventoryReport(products));
+
+//! ЗАДАЧА: Отчёт по заказам
+/*
+Напиши функцию getOrdersReport(orders), которая возвращает:
+
+{
+  completedRevenue: 620,
+  pendingOrders: [2],
+  largestOrder: 5,
+  ordersByStatus: {
+    completed: 3,
+    pending: 1,
+    cancelled: 1
+  }
+}
+
+Исходный массив изменять нельзя.
+*/
+
+const orders = [
+    { id: 1, customer: 'Анна', total: 120, status: 'completed' },
+    { id: 2, customer: 'Олег', total: 80, status: 'pending' },
+    { id: 3, customer: 'Анна', total: 200, status: 'completed' },
+    { id: 4, customer: 'Мария', total: 150, status: 'cancelled' },
+    { id: 5, customer: 'Олег', total: 300, status: 'completed' },
+];
+
+function getOrdersReport(orders) {
+    const completedRevenue = orders
+        .filter((obj) => obj.status === 'completed')
+        .reduce((acc, obj) => acc + obj.total, 0);
+
+    const pendingOrders = orders
+        .filter((obj) => obj.status === 'pending')
+        .map((obj) => obj.id);
+
+    const largestOrder = orders.reduce((acc, obj) => {
+        return acc.total > obj.total ? acc : obj;
+    });
+
+    const ordersByStatus = orders.reduce((acc, obj) => {
+        const status = obj.status;
+        if (!acc[status]) {
+            acc[status] = 0;
+        }
+        acc[status]++;
+        return acc;
+    }, {});
+
+    return {
+        completedRevenue,
+        pendingOrders,
+        largestOrder: largestOrder.id,
+        ordersByStatus,
+    };
+}
+
+console.log(getOrdersReport(orders));
+
+//! ЗАДАЧА: Отчёт по сотрудникам
+/*
+Напиши функцию getEmployeesReport(employees), которая возвращает:
+
+{
+  activeEmployees: ['Анна', 'Олег', 'Иван', 'Катя'],
+  totalSalary: 10200,
+  highestPaid: 'Иван',
+  employeesByDepartment: {
+    Frontend: 2,
+    Backend: 2,
+    Design: 1
+  }
+}
+Исходный массив изменять нельзя.
+*/
+const employees = [
+    { name: 'Анна', department: 'Frontend', salary: 1800, active: true },
+    { name: 'Олег', department: 'Backend', salary: 2200, active: true },
+    { name: 'Мария', department: 'Frontend', salary: 2000, active: false },
+    { name: 'Иван', department: 'Backend', salary: 2500, active: true },
+    { name: 'Катя', department: 'Design', salary: 1700, active: true },
+];
+
+function getEmployeesReport(employees) {
+
+    const activeEmployees = employees.filter(obj => obj.active).map(obj => obj.name);
+
+    const totalSalary = employees.reduce((acc, obj) => acc + obj.salary, 0);
+
+    const highestPaid = employees.reduce((acc, obj) => acc.salary > obj.salary ? acc : obj);
+
+    const employeesByDepartment = employees.reduce((acc, obj) => {
+        const department = obj.department;
+        if (!acc[department]) {
+            acc[department] = 0;
+        }
+        acc[department]++;
+        return acc;
+    }, {});
+
+    return {
+        activeEmployees,
+        totalSalary,
+        highestPaid: highestPaid.name,
+        employeesByDepartment
+    }
+}
+
+console.log(getEmployeesReport(employees));
