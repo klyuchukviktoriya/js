@@ -106,3 +106,37 @@ show();
 
 show = show.bind(user1);
 show();
+
+//! ЗАДАЧА: Таймер пользователя
+/*
+Создай функцию runTimer(callback, times).
+
+Она должна вызвать callback указанное количество раз.
+
+Передай в неё метод increaseSeconds так,
+чтобы он не потерял контекст user.
+*/
+
+const user = {
+    name: 'Анна',
+    seconds: 0,
+
+    increaseSeconds() {
+        this.seconds++;
+    },
+
+    getInfo() {
+        return `${this.name}: ${this.seconds} сек.`;
+    },
+};
+
+function runTimer(callback, times) {
+    for (let i = 0; i < times; i++) {
+        callback();
+    };
+}
+
+runTimer(user.increaseSeconds.bind(user), 5);
+
+console.log(user.getInfo());
+// Анна: 5 сек.

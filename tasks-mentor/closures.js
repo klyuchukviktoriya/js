@@ -168,3 +168,62 @@ console.log(secret.getSecret()); // "12345"
 secret.setSecret('qwerty');
 
 console.log(secret.getSecret()); // "qwerty"
+
+//! ЗАДАЧА: Банковский счёт
+
+/*
+Напиши функцию createBankAccount(initialBalance).
+
+Она возвращает объект с методами:
+
+deposit(amount) — пополняет счёт.
+withdraw(amount) — снимает деньги, если их достаточно.
+getBalance() — возвращает текущий баланс.
+
+Переменная balance должна быть недоступна снаружи.
+*/
+
+function createBankAccount(initialBalance) {
+    let balance = initialBalance;
+
+    return {
+
+        deposit(amount) {
+            return balance += amount;
+        },
+
+        withdraw(amount) {
+            if (balance >= amount) {
+                balance -= amount;
+                return true;
+            }
+            return false;
+        },
+
+        getBalance() {
+            return balance;
+        }
+    }
+}
+
+const account = createBankAccount(1000);
+
+console.log(account.getBalance());
+// 1000
+
+account.deposit(500);
+
+console.log(account.getBalance());
+// 1500
+
+console.log(account.withdraw(700));
+// true
+
+console.log(account.getBalance());
+// 800
+
+console.log(account.withdraw(1000));
+// false
+
+console.log(account.getBalance());
+// 800
