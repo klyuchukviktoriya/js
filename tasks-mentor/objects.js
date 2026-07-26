@@ -706,3 +706,80 @@ console.log(
 //   A: ["Alex", "Anna"],
 //   J: ["John", "Jack"]
 // }
+
+
+//! ЗАДАЧА: Обновление пользователя
+
+/*
+Напиши функцию updateUser(user, updates).
+
+Она должна вернуть новый объект пользователя:
+- заменить свойства, переданные в updates;
+- сохранить остальные свойства;
+- добавить свойство updatedAt со значением '2026-07-27'.
+
+Исходные объекты изменять нельзя.
+*/
+
+const user = {
+    id: 1,
+    name: 'Анна',
+    age: 25,
+    city: 'Одесса',
+};
+
+const updates = {
+    name: 'Мария',
+    age: 30,
+};
+
+function updateUser(user, updates) {
+    return {
+        ...user,
+        ...updates,
+        updatedAt: '2026-07-27'
+    }
+}
+
+console.log(updateUser(user, updates));
+// {
+//   id: 1,
+//   name: 'Мария',
+//   age: 30,
+//   city: 'Одесса',
+//   updatedAt: '2026-07-27'
+// }
+
+console.log(user);
+// { id: 1, name: 'Анна', age: 25, city: 'Одесса' }
+
+
+//! ЗАДАЧА: Удаление пароля
+
+/*
+Напиши функцию hidePassword(user).
+
+Она должна вернуть новый объект без свойства password.
+Исходный объект изменять нельзя.
+
+Используй деструктуризацию и rest-оператор.
+*/
+
+const user = {
+    id: 1,
+    name: 'Анна',
+    password: '1234',
+    city: 'Одесса',
+};
+
+function hidePassword(user) {
+    const { password, ...userWithoutPassword } = user;
+    return userWithoutPassword;
+
+}
+
+console.log(hidePassword(user));
+// { id: 1, name: 'Анна', city: 'Одесса' }
+
+console.log(user);
+// { id: 1, name: 'Анна', password: '1234', city: 'Одесса' }
