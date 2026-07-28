@@ -830,3 +830,108 @@ function getEmployeesReport(employees) {
 }
 
 console.log(getEmployeesReport(employees));
+
+//! ЗАДАНИЕ
+//
+// Верни массив имён только активных
+// совершеннолетних пользователей.
+//
+// Ожидаемый результат:
+// ['Анна', 'Мария']
+
+const users = [
+    { name: 'Анна', age: 25, active: true },
+    { name: 'Игорь', age: 16, active: true },
+    { name: 'Олег', age: 32, active: false },
+    { name: 'Мария', age: 19, active: true },
+];
+
+function getActiveAdults(users) {
+    return users.filter(obj => obj.active && obj.age >= 18).map(obj => obj.name);
+}
+
+console.log(getActiveAdults(users));
+
+//! ЗАДАНИЕ
+//
+// Верни общую стоимость всех товаров:
+// price * quantity
+//
+// Ожидаемый результат: 4300
+
+const products = [
+    { name: 'Телефон', price: 1000, quantity: 2 },
+    { name: 'Наушники', price: 300, quantity: 1 },
+    { name: 'Ноутбук', price: 2000, quantity: 1 },
+];
+
+function getTotalPrice(products) {
+    //   return products.map(obj => obj.price * obj.quantity).reduce((acc,item) => acc + item, 0);
+    return products.reduce((acc, item) => acc + item.price * item.quantity, 0);
+}
+
+console.log(getTotalPrice(products));
+
+//! ЗАДАНИЕ
+//
+// Верни объект самого дорогого товара.
+// Если массив пустой — верни null.
+
+const products = [
+    { name: 'Телефон', price: 1000 },
+    { name: 'Наушники', price: 300 },
+    { name: 'Ноутбук', price: 2000 },
+];
+
+function getMostExpensive(products) {
+    if (products.length === 0) {
+        return null;
+    }
+    return products.reduce((acc, obj) => {
+        if (acc.price > obj.price) {
+            return acc;
+        } else {
+            return obj;
+        }
+    })
+}
+
+console.log(getMostExpensive(products));
+// { name: 'Ноутбук', price: 2000 }
+
+console.log(getMostExpensive([]));
+// null
+
+
+//! ЗАДАНИЕ
+//
+// Верни объект с количеством пользователей
+// в каждом городе.
+//
+// Ожидаемый результат:
+// {
+//   Одесса: 3,
+//   Киев: 1,
+//   Львов: 1
+// }
+
+const users = [
+    { name: 'Анна', city: 'Одесса' },
+    { name: 'Игорь', city: 'Киев' },
+    { name: 'Мария', city: 'Одесса' },
+    { name: 'Олег', city: 'Львов' },
+    { name: 'Вика', city: 'Одесса' },
+];
+
+function countByCity(users) {
+    return users.reduce((acc, obj) => {
+        const city = obj.city;
+        if (!acc[city]) {
+            acc[city] = 0;
+        }
+        acc[city]++;
+        return acc;
+    }, {})
+}
+
+console.log(countByCity(users));

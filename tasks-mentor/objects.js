@@ -783,3 +783,37 @@ console.log(hidePassword(user));
 
 console.log(user);
 // { id: 1, name: 'Анна', password: '1234', city: 'Одесса' }
+
+//! ЗАДАНИЕ
+//
+// Верни новый объект пользователя с обновлениями.
+// Исходные объекты изменять нельзя.
+
+const user = {
+    id: 1,
+    name: 'Анна',
+    age: 25,
+    city: 'Одесса',
+};
+
+const updates = {
+    name: 'Мария',
+    age: 30,
+};
+
+function updateUser(user, updates) {
+    return { ...user, ...updates };
+}
+
+const updatedUser = updateUser(user, updates);
+
+console.log(updatedUser);
+// {
+//   id: 1,
+//   name: 'Мария',
+//   age: 30,
+//   city: 'Одесса'
+// }
+
+console.log(user);
+// исходный объект не изменился
