@@ -227,3 +227,22 @@ console.log(account.withdraw(1000));
 
 console.log(account.getBalance());
 // 800
+
+//! ЗАДАНИЕ
+//
+// Создай счётчик с замыканием.
+// Каждый вызов функции должен увеличивать число на 1.
+
+function createCounter() {
+    let counter = 0;
+    return function add() {
+        counter++;
+        return counter;
+    }
+}
+
+const counter = createCounter();
+
+console.log(counter()); // 1
+console.log(counter()); // 2
+console.log(counter()); // 3

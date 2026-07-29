@@ -817,3 +817,30 @@ console.log(updatedUser);
 
 console.log(user);
 // исходный объект не изменился
+
+//! ЗАДАНИЕ
+//
+// Верни новый объект без свойства password.
+// Исходный объект изменять нельзя.
+
+const user = {
+    id: 1,
+    name: 'Вика',
+    password: '123456',
+    city: 'Одесса',
+};
+
+function removePassword(user) {
+    const { password, ...userWithoutPassword } = user;
+    return userWithoutPassword;
+}
+
+console.log(removePassword(user));
+// {
+//   id: 1,
+//   name: 'Вика',
+//   city: 'Одесса'
+// }
+
+console.log(user);
+// исходный объект не изменился

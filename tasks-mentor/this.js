@@ -140,3 +140,21 @@ runTimer(user.increaseSeconds.bind(user), 5);
 
 console.log(user.getInfo());
 // Анна: 5 сек.
+
+//! ЗАДАНИЕ
+//
+// Исправь только строку с setTimeout,
+// чтобы через секунду вывелось:
+// Привет, Вика
+
+const user = {
+    name: 'Вика',
+
+    sayHello() {
+        console.log(`Привет, ${this.name}`);
+    },
+};
+
+// setTimeout(user.sayHello, 1000);
+
+setTimeout(user.sayHello.bind(user), 1000);

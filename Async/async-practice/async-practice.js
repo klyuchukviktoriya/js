@@ -265,3 +265,35 @@ async function getResult() {
 }
 
 getResult();
+
+//! ЗАДАНИЕ
+//
+// Напиши асинхронную функцию getPost(id).
+//
+// Она должна:
+// 1. Получить пост по указанному id.
+// 2. Если ответ неуспешный — выбросить ошибку.
+// 3. Вернуть полученный объект.
+
+const URL = 'https://jsonplaceholder.typicode.com/posts';
+
+async function getPost(id) {
+  const res = await fetch(`${URL}/${id}`);
+
+  if (!res.ok) {
+    throw new Error(`Response with status: ${res.status} `);
+  }
+
+  return res.json();
+}
+
+async function run() {
+  try {
+    const post = await getPost(1);
+    console.log(post);
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+run();
