@@ -8,6 +8,29 @@
     <body>
         <input class="search-input" type="text" />
         <button class="search-button">Найти</button>
+
+        <form class="product-form">
+            <input class="name-input" type="text" placeholder="Название" />
+            <input class="price-input" type="number" placeholder="Цена" />
+            <button type="submit">Добавить</button>
+        </form>
+
+        <select class="sort-select">
+            <option value="default">Без сортировки</option>
+            <option value="cheap">Сначала дешёвые</option>
+            <option value="expensive">Сначала дорогие</option>
+        </select>
+
+        <p>
+            Количество:
+            <span class="products-count">0</span>
+        </p>
+        <p>
+            Общая стоимость:
+            <span class="products-total">0</span>
+            грн
+        </p>
+
         <ul class="list"></ul>
         <script src="./list-render.js"></script>
     </body>
