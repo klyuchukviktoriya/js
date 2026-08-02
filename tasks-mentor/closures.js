@@ -246,3 +246,65 @@ const counter = createCounter();
 console.log(counter()); // 1
 console.log(counter()); // 2
 console.log(counter()); // 3
+
+//! ЗАДАЧА 3 ИЗ 5
+//
+// Создай функцию createHistory(initialValue).
+//
+// Она должна вернуть объект с методами:
+//
+// set(value)
+// - сохраняет текущее значение в историю;
+// - устанавливает новое значение.
+//
+// undo()
+// - возвращает предыдущее значение;
+// - если истории нет, значение не меняется.
+//
+// getValue()
+// - возвращает текущее значение.
+//
+// Внутренние данные должны быть недоступны снаружи.
+
+function createHistory(initialValue) {
+    let current = initialValue;
+
+    let prev = [];
+
+    return {
+        set(value) {
+            prev.push(current);
+            current = value;
+        },
+        undo() {
+            if (prev.length >= 1) {
+                current = prev[prev.length - 1];
+                prev.pop();
+                return current;
+            } else {
+                return current;
+            }
+        },
+        getValue() {
+            return current;
+        }
+    }
+}
+
+const history = createHistory('HTML');
+
+console.log(history.getValue()); // HTML
+
+history.set('CSS');
+history.set('JavaScript');
+
+console.log(history.getValue()); // JavaScript
+
+history.undo();
+console.log(history.getValue()); // CSS
+
+history.undo();
+console.log(history.getValue()); // HTML
+
+history.undo();
+console.log(history.getValue()); // HTML

@@ -935,3 +935,58 @@ function countByCity(users) {
 }
 
 console.log(countByCity(users));
+
+//! ЗАДАЧА 1 ИЗ 5
+//
+// Верни новый массив оплаченных заказов.
+//
+// Для каждого заказа оставь только:
+// - id;
+// - total — общую стоимость всех его товаров.
+//
+// Результат отсортируй по total от большего к меньшему.
+// Исходный массив изменять нельзя.
+//
+// Ожидаемый результат:
+//
+// [
+//   { id: 3, total: 2400 },
+//   { id: 1, total: 1300 }
+// ]
+
+const orders = [
+    {
+        id: 1,
+        status: 'paid',
+        items: [
+            { name: 'Телефон', price: 1000, quantity: 1 },
+            { name: 'Наушники', price: 300, quantity: 1 },
+        ],
+    },
+    {
+        id: 2,
+        status: 'pending',
+        items: [
+            { name: 'Ноутбук', price: 2000, quantity: 1 },
+        ],
+    },
+    {
+        id: 3,
+        status: 'paid',
+        items: [
+            { name: 'Клавиатура', price: 800, quantity: 2 },
+            { name: 'Мышь', price: 400, quantity: 2 },
+        ],
+    },
+];
+
+function getPaidOrders(orders) {
+
+    return orders.filter(obj => obj.status === 'paid').map(obj => {
+        const id = obj.id;
+        const total = obj.items.reduce((acc, obj) => acc + (obj.price * obj.quantity), 0);
+        return { id, total }
+    }).toSorted((a, b) => b.total - a.total)
+}
+
+console.log(getPaidOrders(orders));

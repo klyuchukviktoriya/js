@@ -844,3 +844,66 @@ console.log(removePassword(user));
 
 console.log(user);
 // исходный объект не изменился
+
+//! ЗАДАЧА 2 ИЗ 5
+//
+// Верни новый массив пользователей.
+//
+// У пользователя с указанным id измени city.
+// Исходный массив, объект пользователя и объект address изменять нельзя.
+
+const users = [
+    {
+        id: 1,
+        name: 'Анна',
+        address: {
+            city: 'Одесса',
+            street: 'Дерибасовская',
+        },
+    },
+    {
+        id: 2,
+        name: 'Игорь',
+        address: {
+            city: 'Киев',
+            street: 'Крещатик',
+        },
+    },
+];
+
+function updateUserCity(users, userId, city) {
+
+    return users.map(obj => {
+        if (obj.id === userId) {
+            const { ...newAddress } = obj.address;
+            newAddress.city = city;
+
+            return { ...obj, address: newAddress };
+        } else {
+            return obj;
+        }
+    })
+}
+
+console.log(updateUserCity(users, 1, 'Львов'));
+// [
+//   {
+//     id: 1,
+//     name: 'Анна',
+//     address: {
+//       city: 'Львов',
+//       street: 'Дерибасовская'
+//     }
+//   },
+//   {
+//     id: 2,
+//     name: 'Игорь',
+//     address: {
+//       city: 'Киев',
+//       street: 'Крещатик'
+//     }
+//   }
+// ]
+
+console.log(users[0].address.city);
+// Одесса
