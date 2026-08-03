@@ -990,3 +990,47 @@ function getPaidOrders(orders) {
 }
 
 console.log(getPaidOrders(orders));
+
+//! НОВОЕ ЗАДАНИЕ: обработка заказа
+//
+// Верни новый массив товаров с уменьшенным stock.
+//
+// Правила:
+//
+// 1. Исходный массив и объекты изменять нельзя.
+// 2. Для товаров из заказа уменьши stock на quantity.
+// 3. Товары, которых нет в заказе, оставь без изменений.
+// 4. Если товара не существует или его недостаточно — верни null.
+// 5. Если хотя бы одной позиции недостаточно, не списывай ничего.
+
+const products = [
+    { id: 1, name: 'Телефон', stock: 5 },
+    { id: 2, name: 'Наушники', stock: 2 },
+    { id: 3, name: 'Ноутбук', stock: 10 },
+];
+
+const order = [
+    { productId: 1, quantity: 2 },
+    { productId: 2, quantity: 1 },
+];
+
+function processOrder(products, order) {
+    //    ! ===============================================
+}
+
+console.log(processOrder(products, order));
+// [
+//   { id: 1, name: 'Телефон', stock: 3 },
+//   { id: 2, name: 'Наушники', stock: 1 },
+//   { id: 3, name: 'Ноутбук', stock: 10 }
+// ]
+
+console.log(products);
+// исходный массив не изменился
+
+console.log(
+    processOrder(products, [
+        { productId: 2, quantity: 3 },
+    ])
+);
+// null

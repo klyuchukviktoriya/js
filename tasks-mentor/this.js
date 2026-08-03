@@ -158,3 +158,36 @@ const user = {
 // setTimeout(user.sayHello, 1000);
 
 setTimeout(user.sayHello.bind(user), 1000);
+
+//! ЗАДАЧА 5 ИЗ 5
+//
+// Не изменяй объекты и не копируй метод.
+//
+// 1. Вызови метод getPrice объекта shop
+//    в контексте vipShop через call().
+//
+// 2. Создай функцию vipGetPrice через bind(),
+//    навсегда привязав к ней vipShop.
+//
+// Оба результата должны быть 750.
+
+const shop = {
+    discount: 10,
+
+    getPrice(price) {
+        return price - (price * this.discount) / 100;
+    },
+};
+
+const vipShop = {
+    discount: 25,
+};
+
+// вызов через call()
+const totalPrice = shop.getPrice.call(vipShop, 1000);
+
+// создание vipGetPrice через bind()
+const vipGetPrice = shop.getPrice.bind(vipShop);
+
+console.log(totalPrice); // 750
+console.log(vipGetPrice(1000)); // 750
