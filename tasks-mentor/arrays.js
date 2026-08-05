@@ -805,12 +805,15 @@ const employees = [
 ];
 
 function getEmployeesReport(employees) {
-
-    const activeEmployees = employees.filter(obj => obj.active).map(obj => obj.name);
+    const activeEmployees = employees
+        .filter((obj) => obj.active)
+        .map((obj) => obj.name);
 
     const totalSalary = employees.reduce((acc, obj) => acc + obj.salary, 0);
 
-    const highestPaid = employees.reduce((acc, obj) => acc.salary > obj.salary ? acc : obj);
+    const highestPaid = employees.reduce((acc, obj) =>
+        acc.salary > obj.salary ? acc : obj
+    );
 
     const employeesByDepartment = employees.reduce((acc, obj) => {
         const department = obj.department;
@@ -825,8 +828,8 @@ function getEmployeesReport(employees) {
         activeEmployees,
         totalSalary,
         highestPaid: highestPaid.name,
-        employeesByDepartment
-    }
+        employeesByDepartment,
+    };
 }
 
 console.log(getEmployeesReport(employees));
@@ -847,7 +850,9 @@ const users = [
 ];
 
 function getActiveAdults(users) {
-    return users.filter(obj => obj.active && obj.age >= 18).map(obj => obj.name);
+    return users
+        .filter((obj) => obj.active && obj.age >= 18)
+        .map((obj) => obj.name);
 }
 
 console.log(getActiveAdults(users));
@@ -893,7 +898,7 @@ function getMostExpensive(products) {
         } else {
             return obj;
         }
-    })
+    });
 }
 
 console.log(getMostExpensive(products));
@@ -901,7 +906,6 @@ console.log(getMostExpensive(products));
 
 console.log(getMostExpensive([]));
 // null
-
 
 //! ЗАДАНИЕ
 //
@@ -931,7 +935,7 @@ function countByCity(users) {
         }
         acc[city]++;
         return acc;
-    }, {})
+    }, {});
 }
 
 console.log(countByCity(users));
@@ -966,9 +970,7 @@ const orders = [
     {
         id: 2,
         status: 'pending',
-        items: [
-            { name: 'Ноутбук', price: 2000, quantity: 1 },
-        ],
+        items: [{ name: 'Ноутбук', price: 2000, quantity: 1 }],
     },
     {
         id: 3,
@@ -981,12 +983,17 @@ const orders = [
 ];
 
 function getPaidOrders(orders) {
-
-    return orders.filter(obj => obj.status === 'paid').map(obj => {
-        const id = obj.id;
-        const total = obj.items.reduce((acc, obj) => acc + (obj.price * obj.quantity), 0);
-        return { id, total }
-    }).toSorted((a, b) => b.total - a.total)
+    return orders
+        .filter((obj) => obj.status === 'paid')
+        .map((obj) => {
+            const id = obj.id;
+            const total = obj.items.reduce(
+                (acc, obj) => acc + obj.price * obj.quantity,
+                0
+            );
+            return { id, total };
+        })
+        .toSorted((a, b) => b.total - a.total);
 }
 
 console.log(getPaidOrders(orders));
@@ -1000,8 +1007,7 @@ console.log(getPaidOrders(orders));
 // 1. Исходный массив и объекты изменять нельзя.
 // 2. Для товаров из заказа уменьши stock на quantity.
 // 3. Товары, которых нет в заказе, оставь без изменений.
-// 4. Если товара не существует или его недостаточно — верни null.
-// 5. Если хотя бы одной позиции недостаточно, не списывай ничего.
+// 4. Если хотя бы одного товара из заказа не существует либо его недостаточно — функция должна вернуть null вместо массива. Никакие товары при этом не списываются.
 
 const products = [
     { id: 1, name: 'Телефон', stock: 5 },
@@ -1015,7 +1021,26 @@ const order = [
 ];
 
 function processOrder(products, order) {
-    //    ! ===============================================
+    const allInStock = order.every(item => {
+        return products.find(obj => obj.id === item.productId && obj.stock >= item.quantity);
+    });
+
+    if (!allInStock) {
+        return null;
+    }
+
+    return products.map(obj => {
+        const orderItem = order.find(item => obj.id === item.productId);
+
+        if (!orderItem) {
+            return obj;
+        }
+
+        return {
+            ...obj,
+            stock: obj.stock - orderItem.quantity,
+        };
+    });
 }
 
 console.log(processOrder(products, order));
@@ -1028,9 +1053,5 @@ console.log(processOrder(products, order));
 console.log(products);
 // исходный массив не изменился
 
-console.log(
-    processOrder(products, [
-        { productId: 2, quantity: 3 },
-    ])
-);
+console.log(processOrder(products, [{ productId: 2, quantity: 3 }]));
 // null
