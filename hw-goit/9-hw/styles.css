@@ -1,0 +1,65 @@
+/*
+  |============================
+  | include css partials with
+  | default @import url()
+  |============================
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:wght@300;400;700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=block');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(236, 208, 84);
+}
+
+ul,
+li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    color: currentColor;
+    text-decoration: none;
+}
+
+.nav-link {
+    margin: 50px auto 50px;
+    display: block;
+    width: 180px;
+    background-color: #fff;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 40px;
+}
+
+.gallery {
+    max-width: 1128px;
+    margin: 24px auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 24px;
+    list-style: none;
+}
+
+.gallery-image {
+    width: 360px;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-image:hover {
+    transform: scale(1.04);
+}
